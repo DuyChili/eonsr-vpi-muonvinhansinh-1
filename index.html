@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   :root {
@@ -1044,11 +1045,39 @@
   }
 
   .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 4rem;
-  }
+        display: grid;
+        grid-template-columns: 2fr 1.2fr 1fr; /* Tăng chiều rộng cho cột Liên hệ */
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    /* Đảm bảo chữ trong footer không bị nghiêng nếu bạn muốn giống ảnh mẫu */
+    .footer-col ul li span, 
+    .footer-col ul li a {
+        font-style: normal !important; /* Chuyển từ font nghiêng sang đứng giống ảnh */
+        font-family: 'Outfit', sans-serif !important; /* Dùng font hiện đại thay cho font Garamond */
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+    .footer-col i {
+        color: var(--amber); /* Icon sẽ có màu cam đặc trưng của VanPhu */
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    /* Hiệu ứng khi di chuột vào link */
+    .footer-col ul li a:hover i {
+        color: var(--cream); /* Icon đổi sang màu kem khi hover */
+        transform: translateY(-2px);
+    }
+
+    /* Đảm bảo text không bị lệch */
+    .footer-col ul li a {
+        display: flex;
+        align-items: center;
+    }
 
   .footer-brand .brand-name {
     font-family: 'Outfit', sans-serif;
@@ -1753,7 +1782,7 @@
             <td class="detail-col">HDV thuyết minh · Street Performance · Workshop · Talkshow Homentor</td>
           </tr>
           <tr>
-            <td class="time-col">Suốt ngày</td>
+            <td class="time-col">Cả ngày</td>
             <td class="activity-col">Trắc nghiệm Standee LED</td>
             <td class="detail-col">"Ngôi nhà của tôi như thế nào?" – Tìm hiểu phong cách sống của bạn</td>
           </tr>
@@ -2068,38 +2097,65 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="brand-name"><img src="assets/images/VPI_Logo.png" style="height: 40px;" alt=""></div>
-        <p>Kiến tạo không gian sống là kiến tạo văn hóa và con người. Bất động sản Vị Nhân Sinh.</p>
+    <div class="mb-10">
+      <div class="brand-name mb-6">
+        <img src="assets/images/VPI_Logo.png" style="height: 40px;" alt="VANPHU Logo">
       </div>
+      <p class="section-body text-sm max-w-5xl opacity-80" style="font-style: normal;">
+        Thành lập từ năm 2003, Công ty Cổ phần Phát triển Bất động sản Văn Phú không chỉ là nhà đầu tư mà còn thể hiện vai trò trong toàn bộ quá trình thực hiện dự án bất động sản: từ khâu nghiên cứu, phát triển, thiết kế, quản lý xây dựng thi công, vận hành và khai thác sau đầu tư. Doanh nghiệp nhanh chóng trở thành một trong những đối tác đáng tin cậy và uy tín trong ngành xây dựng cũng như phát triển dự án. Với tầm nhìn Vị nhân sinh, Văn Phú từng bước khẳng định vị thế trong lĩnh vực bất động sản tại Việt Nam.
+      </p>
+    </div>
+
+    <hr style="border-color: rgba(227,124,77,0.2); margin-bottom: 3rem;">
+
+    <div class="footer-grid">
       <div class="footer-col">
-        <h4>Thông Tin</h4>
+        <h4>Liên hệ</h4>
         <ul>
-          <li><span>Tòa Exhibition</span></li>
-          <li><span>Công Viên 23 Tháng 9</span></li>
-          <li><span>TP. Hồ Chí Minh</span></li>
-          <li><span>3–5 Tháng 4, 2026</span></li>
-          <li><span>9:00 – 21:00</span></li>
+          <li><span>Địa chỉ: 104 phố Thái Thịnh, Phường Trung Liệt, Quận Đống Đa, Hà Nội, Việt Nam</span></li>
+          <li><span>Hotline: (+84) 24 6258 3535</span></li>
+          <li><span>Fax: (+84) 24 6258 3636</span></li>
+          <li><span>Email: info@vanphu.vn</span></li>
         </ul>
       </div>
+
       <div class="footer-col">
-        <h4>Khám Phá</h4>
+        <h4>Khám phá</h4>
         <ul>
-          <li><a href="#concept">Về Triển Lãm</a></li>
-          <li><a href="#journey">5 Không Gian Dome</a></li>
-          <li><a href="#artists">Nghệ Sĩ</a></li>
-          <li><a href="#timeline">Lịch Trình</a></li>
-          <li><a href="#register">Đăng Ký Vé</a></li>
+          <li><a href="#">Thông tin Văn Phú</a></li>
+          <li><a href="#">Dự án</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kết nối với chúng tôi</h4>
+        <ul>
+          <li>
+            <a href="#" class="flex items-center gap-3">
+              <i class="fa-brands fa-facebook-f w-5"></i>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3">
+              <i class="fa-brands fa-linkedin-in w-5"></i>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-3">
+              <i class="fa-brands fa-youtube w-5"></i>
+              <span>Youtube</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 VanPhu Real Estate · Triển Lãm Muôn Vị Nhân Sinh</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(245,230,211,0.3);font-size:0.85rem">
-        "Trái tim của ta thuộc về nơi ta coi là Nhà."
-      </p>
+      <p>© Copyright 2025 by Van Phu. All rights reserved.</p>
     </div>
   </div>
 </footer>
