@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css" >
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,11 +74,11 @@
             <div class="artist-subtitle mb-3" data-aos="fade-up">Nghệ sĩ đồng hành</div>
             <div class="artist-title-1" data-aos="fade-up" data-aos-delay="100">Tôn vinh những tiếng nói <br> nghệ thuật
             </div>
-            <div class="artist-title-2 text-end" data-aos="fade-up" data-aos-delay="200">vị nhân sinh mới tại Việt Nam
+            <div class="artist-title-2" data-aos="fade-up" data-aos-delay="200">vị nhân sinh mới tại Việt Nam
             </div>
         </div>
 
-        <div class="artist-cards" data-aos="fade-up">
+        <div class="artist-cards" data-aos="fade-up" data-aos-delay="100">
 
             <div class="artist-card">
                 <img src="assets/images/artist2.png" alt="Kmom Nguyễn" />
@@ -395,8 +396,7 @@
                         <input type="checkbox" class="form-checkbox" id="consent" required />
                         <label for="consent" class="form-checkbox-text">
                             Tôi đồng ý nhận thông tin và chương trình ưu đãi từ Văn Phú qua email. Thông tin cá nhân
-                            được bảo mật theo <a href="#">Chính sách Bảo vệ Dữ liệu</a> của Công ty Cổ phần Đầu tư Văn
-                            Phú – Invest (Nghị định 13/2023/NĐ-CP).
+                            được bảo mật theo <a href="#">Chính sách Bảo vệ Dữ liệu</a> của Công ty Cổ phần phát triển Bất động sản Văn Phú (Nghị định 13/2023/NĐ-CP).
                         </label>
                     </div>
 
@@ -458,6 +458,7 @@
                             Địa chỉ: 104 phố Thái Thịnh, Phường Trung Liệt,<br />
                             Quận Đống Đa, Hà Nội, Việt Nam
                         </a>
+                        <br>
                         <a href="tel:+842462583535">Hotline: (+84) 24 6258 3535</a>
                         <a href="fax:+842462583636">Fax: (+84) 24 6258 3636</a>
                         <a href="mailto:info@vanphu.vn">Email: info@vanphu.vn</a>
@@ -467,10 +468,12 @@
                 <div class="footer-col">
                     <span class="footer-col-title">KHÁM PHÁ</span>
                     <div class="footer-col-text">
-                        <a href="#">Thông tin Văn Phú</a>
-                        <a href="#">Dự án</a>
-                        <a href="#">Tin tức</a>
-                        <a href="#">Liên hệ</a>
+                        <a href="https://vanphu.vn/thong-tin-van-phu/">Thông tin Văn Phú</a>
+                        <a href="https://vanphu.vn/du-an/">Dự án</a>
+                        <a href="https://vanphu.vn/quan-he-co-dong/">Quan hệ cổ đông</a>
+                        <a href="https://vanphu.vn/phat-trien-ben-vung/">Phát triển bền vững</a>
+                        <a href="https://vanphu.vn/tin-tuc/">Tin tức</a>
+                        <a href="https://vanphu.vn/lien-he/">Liên hệ</a>
                     </div>
                 </div>
 
@@ -520,6 +523,54 @@
     </footer>
 
 
+
+    <!-- MODAL OTP -->
+    <div class="modal-overlay" id="otpModal">
+        <div class="modal-box">
+            <button class="modal-close" id="otpModalClose">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <div class="modal-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" 
+                          stroke="#BB581A" stroke-width="2" fill="none"/>
+                    <path d="M22 6l-10 7L2 6" stroke="#BB581A" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="modal-tag">Xác thực email</div>
+
+            <h2 class="modal-title">Nhập mã OTP</h2>
+
+            <p class="modal-desc">
+                Mã xác thực 4 số đã được gửi đến<br/>
+                <span class="modal-email-highlight" id="otpEmailDisplay">—</span>
+            </p>
+
+           <div class="otp-inputs">
+              <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+              <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+              <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+              <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+              <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+              <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+          </div>
+
+            <div class="otp-error-msg" id="otpErrorMsg"></div>
+
+            <div class="otp-timer" id="otpTimerWrapper">
+                Mã hết hạn sau <span id="otpCountdown">60</span>s
+            </div>
+            <button class="otp-resend" id="otpResend">Gửi lại mã</button>
+
+            <button class="modal-btn" id="otpConfirmBtn">Xác nhận</button>
+
+            <p class="modal-note">Không nhận được mã? Kiểm tra hộp thư Spam<br/>hoặc thử gửi lại sau.</p>
+        </div>
+    </div>
     <!-- modal -->
     <div class="modal-overlay" id="successModal">
       <div class="modal-box">
