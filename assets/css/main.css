@@ -38,7 +38,7 @@
      background: linear-gradient(180deg, #FFDBCC 0%, #FDF7F3 100%);
      margin: 0;
      padding: 0;
-     overflow-x: clip;
+     overflow-x: hidden;
      font-family: var(--font-svn);
  }
 
@@ -807,9 +807,15 @@
      width: 100%;
      display: flex;
      align-items: stretch;
-     overflow: clip;
+     overflow: hidden;
      gap: 40px;
  }
+
+ .art-title-big,
+.pmq-title-script {
+    padding-left: 12px;
+    margin-left: -12px;
+}
 
  .art-section {
      flex-shrink: 0;
@@ -944,29 +950,28 @@
         font-size: 72px;
         line-height: 1.3;
         text-align: right;
-        padding-left: 4px;      /* ✅ tạo chỗ cho ascender bên trái */
-        padding-top: 10px;      /* ✅ tạo chỗ cho ascender bên trên */
-        -webkit-text-stroke: 0; /* ✅ tránh Safari clip */
+        padding-left: 4px;     
+        padding-top: 10px;    
+        -webkit-text-stroke: 0; 
     }
 
-    /* ✅ Quan trọng: art-top không được overflow hidden */
     .art-title-small {
-        padding-top: 12px;          /* ✅ chống Safari clip ascender */
-        -webkit-transform: translateZ(0); /* ✅ force GPU layer */
+        padding-top: 12px;         
+        -webkit-transform: translateZ(0); 
     }
 
     .art-top {
         width: 100%;
         overflow: visible;
         -webkit-overflow-scrolling: touch;
-        transform: translateZ(0);   /* ✅ tạo composite layer riêng */
+        transform: translateZ(0);   
     }
 }
  @media (max-width: 767px) {
     .art-title-small {
         font-size: 40px;
-        line-height: 1.4; /* ✅ thay vì 64px cố định */
-        padding-top: 8px; /* ✅ thêm chỗ cho ascender */
+        line-height: 1.4; 
+        padding-top: 8px; 
     }
 }
 
