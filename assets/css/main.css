@@ -38,7 +38,7 @@
      background: linear-gradient(180deg, #FFDBCC 0%, #FDF7F3 100%);
      margin: 0;
      padding: 0;
-     overflow-x: hidden;
+     overflow-x: clip;
      font-family: var(--font-svn);
  }
 
@@ -807,7 +807,7 @@
      width: 100%;
      display: flex;
      align-items: stretch;
-     overflow: hidden;
+     overflow: clip;
      gap: 40px;
  }
 
@@ -961,6 +961,13 @@
          /* ✅ đảm bảo không bị ẩn */
      }
  }
+ @media (max-width: 767px) {
+    .art-title-small {
+        font-size: 40px;
+        line-height: 1.4; /* ✅ thay vì 64px cố định */
+        padding-top: 8px; /* ✅ thêm chỗ cho ascender */
+    }
+}
 
  /* Mobile: ẩn ảnh desktop, hiện ảnh mobile */
  @media (max-width: 991px) {
