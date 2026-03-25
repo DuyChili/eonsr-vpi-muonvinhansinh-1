@@ -1,1468 +1,571 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muôn Vị Nhân Sinh – Văn Phú · Triển Lãm Tháng 4.2026</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Không Gian Nghệ Thuật</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css" >
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Caveat:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-/* =====================================================
-   BRAND COLORS — LIGHT THEME
-   ===================================================== */
-:root {
-  --cam-hoang-hon: #BB581A;
-  --nau-dat:       #92441A;
-  --vang-binh-minh:#DEB243;
-  --xanh-reu:      #8F8940;
-  --luc-la:        #1D6258;
-  --do-bordeaux:   #6C1503;
-  --xam-lanh:      #B4BDC0;
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
 
-  --bg-deep:   #FFFFFF;
-  --bg-dark:   #F8F5F2;
-  --bg-mid:    #F0EBE6;
-  --bg-warm:   #FEFBF6;
-
-  --text-primary: #1A0D07;
-  --text-secondary: #92441A;
-  --text-muted:   #6B5C52;
-
-  --font-brand: 'Playfair Display', Georgia, serif;
-  --font-hand:  'Dancing Script', cursive;
-  --font-body:  'Be Vietnam Pro', sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg-deep);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-weight: 400;
-  overflow-x: hidden;
-}
-
-body::after {
-  content: '';
-  position: fixed; inset: 0; z-index: 9998;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.02'/%3E%3C/svg%3E");
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
-
-/* =================== TYPOGRAPHY =================== */
-.t-brand { font-family: var(--font-brand); }
-.t-hand  { font-family: var(--font-hand); }
-
-/* =================== NAV =================== */
-.site-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 22px 48px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
-  transition: padding .35s, background .35s, border-bottom .35s;
-}
-.site-nav.stuck {
-  padding: 14px 48px;
-  background: rgba(255,255,255,0.98);
-  border-bottom: 1px solid rgba(187,88,26,.15);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo svg { width: 38px; }
-.nav-logo-text { font-family: var(--font-brand); font-size: .95rem; color: var(--cam-hoang-hon); letter-spacing: .08em; }
-.nav-menu { list-style: none; display: flex; gap: 36px; margin-bottom: 0; }
-.nav-menu a {
-  color: var(--text-primary); text-decoration: none;
-  font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-  font-weight: 500; opacity: .7; transition: opacity .2s, color .2s;
-}
-.nav-menu a:hover { opacity: 1; color: var(--cam-hoang-hon); }
-.nav-cta-btn {
-  background: var(--cam-hoang-hon); color: #fff !important; opacity: 1 !important;
-  padding: 8px 22px; font-weight: 500 !important;
-  transition: background .2s !important;
-}
-.nav-cta-btn:hover { background: var(--nau-dat) !important; }
-.nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.nav-burger span { display: block; width: 22px; height: 2px; background: var(--text-primary); transition: .3s; }
-
-/* =================== HERO =================== */
-#hero {
-  min-height: 100vh; position: relative;
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
-}
-.hero-cinematic-bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 65% 35%, rgba(222,178,67,.15) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(187,88,26,.1) 0%, transparent 50%),
-    linear-gradient(160deg, #F8F5F2 0%, #FFFFFF 60%, #F0EBE6 100%);
-}
-.hero-paint {
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(circle at 55% 30%, rgba(222,178,67,.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(187,88,26,.04) 0%, transparent 35%);
-}
-.hero-windows-grid {
-  position: absolute; inset: 0; pointer-events: none;
-  display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(3, 1fr);
-  gap: 3px; opacity: .05;
-}
-.hw { background: linear-gradient(135deg, rgba(187,88,26,.5), rgba(146,68,26,.3)); animation: hwPulse 5s ease-in-out infinite alternate; }
-.hw:nth-child(2n)  { animation-delay: 1.5s; opacity: .5; }
-.hw:nth-child(3n)  { animation-delay: 3s;   opacity: .7; }
-.hw:nth-child(7)   { opacity: 1; animation-duration: 3s; }
-.hw:nth-child(11)  { opacity: .9; animation-delay: .8s; }
-@keyframes hwPulse {
-  from { background: linear-gradient(135deg, rgba(187,88,26,.2), rgba(146,68,26,.1)); }
-  to   { background: linear-gradient(135deg, rgba(187,88,26,.7), rgba(146,68,26,.5)); }
-}
-
-.hero-content {
-  position: relative; z-index: 2; text-align: center; padding: 0 24px;
-  max-width: 900px; width: 100%;
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-size: .68rem; letter-spacing: .28em; text-transform: uppercase; font-weight: 600;
-  color: var(--cam-hoang-hon); margin-bottom: 24px;
-  animation: fadeRise .9s .1s both;
-}
-.hero-eyebrow::before, .hero-eyebrow::after {
-  content: ''; flex: 1; height: 1px; width: 40px; background: var(--cam-hoang-hon); opacity: .5;
-}
-.hero-title-brand {
-  font-family: var(--font-brand); font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: var(--nau-dat); letter-spacing: .25em; text-transform: uppercase;
-  display: block; margin-bottom: 8px;
-  animation: fadeRise .9s .25s both;
-}
-.hero-title-main {
-  font-family: var(--font-hand); font-weight: 700;
-  font-size: clamp(4rem, 13vw, 10rem);
-  color: var(--cam-hoang-hon); line-height: .95;
-  display: block; margin-bottom: 12px;
-  animation: fadeRise .9s .4s both;
-  text-shadow: 0 4px 40px rgba(187,88,26,.15);
-}
-.hero-title-sub {
-  font-family: var(--font-brand); font-style: italic; font-weight: 600;
-  font-size: clamp(.95rem, 2.2vw, 1.4rem);
-  color: var(--text-primary); opacity: .8;
-  animation: fadeRise .9s .55s both;
-}
-.hero-meta-row {
-  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-  gap: 0; margin-top: 36px;
-  animation: fadeRise .9s .7s both;
-}
-.hero-meta-item { padding: 0 28px; text-align: center; }
-.hero-meta-item + .hero-meta-item { border-left: 1px solid rgba(187,88,26,.2); }
-.hm-label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 5px; }
-.hm-val   { font-family: var(--font-brand); font-weight: 600; font-size: .95rem; color: var(--nau-dat); }
-.hero-actions { margin-top: 44px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeRise .9s .85s both; }
-.btn-fill {
-  background: var(--cam-hoang-hon); color: #fff; border: none;
-  padding: 14px 44px; font-family: var(--font-body); font-size: .82rem;
-  letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
-  text-decoration: none; cursor: pointer; transition: background .25s, transform .2s;
-  box-shadow: 0 4px 15px rgba(187,88,26,.2);
-}
-.btn-fill:hover { background: var(--nau-dat); transform: translateY(-2px); color: #fff; }
-.btn-ghost {
-  background: transparent; color: var(--cam-hoang-hon); border: 1px solid var(--cam-hoang-hon);
-  padding: 14px 44px; font-family: var(--font-body); font-size: .82rem;
-  letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
-  text-decoration: none; cursor: pointer; transition: background .25s, color .25s, transform .2s;
-}
-.btn-ghost:hover { background: var(--cam-hoang-hon); color: #fff; transform: translateY(-2px); }
-.hero-scroll-hint {
-  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  animation: fadeRise .9s 1.1s both;
-}
-.hero-scroll-hint span { font-size: .58rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--text-muted); }
-.scroll-tick { width: 1px; height: 56px; background: linear-gradient(to bottom, var(--cam-hoang-hon), transparent); animation: tickMove 2s ease-in-out infinite; }
-@keyframes tickMove { 0%,100%{opacity:.3;transform:scaleY(.4);transform-origin:top;} 50%{opacity:1;transform:scaleY(1);} }
-@keyframes fadeRise { from{opacity:0;transform:translateY(32px);} to{opacity:1;transform:translateY(0);} }
-
-/* =================== SHARED SECTION STYLES =================== */
-section { padding: 110px 0; }
-.sec-eyebrow {
-  font-size: .62rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
-  color: var(--cam-hoang-hon); display: block; margin-bottom: 14px;
-}
-.sec-h { font-family: var(--font-brand); font-weight: 700; font-size: clamp(2rem, 5vw, 3.2rem); color: var(--text-primary); line-height: 1.15; }
-.hand-accent { font-family: var(--font-hand); font-weight: 600; color: var(--cam-hoang-hon); font-size: 1.4em; line-height: .9; }
-.sec-rule { width: 56px; height: 2px; background: linear-gradient(to right, var(--cam-hoang-hon), transparent); margin: 22px 0; }
-.sec-lead {
-  font-family: var(--font-brand); font-style: italic;
-  font-size: 1.05rem; color: var(--text-muted); line-height: 1.9; max-width: 580px;
-}
-.ao { opacity: 0; transform: translateY(28px); transition: opacity .65s, transform .65s; }
-.ao.vis { opacity: 1; transform: translateY(0); }
-.ao-d1 { transition-delay: .1s; } .ao-d2 { transition-delay: .2s; } .ao-d3 { transition-delay: .3s; } .ao-d4 { transition-delay: .4s; }
-
-/* =================== CONCEPT =================== */
-#concept { background: var(--bg-deep); position: relative; }
-#concept::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 15% 20%, rgba(187,88,26,.03), transparent 60%);
-}
-.concept-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start; }
-.dome-list { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
-.dome-row {
-  display: flex; align-items: stretch; gap: 0;
-  border: 1px solid rgba(187,88,26,.15);
-  background: #FFFFFF;
-  transition: background .3s, border-color .3s, transform .3s; cursor: default;
-  overflow: hidden;
-}
-.dome-row:hover { background: var(--bg-warm); border-color: rgba(187,88,26,.4); transform: translateX(5px); }
-.dome-num {
-  font-family: var(--font-brand); font-size: 1.8rem; font-weight: 700;
-  color: rgba(187,88,26,.4); min-width: 68px; display: flex; align-items: center;
-  justify-content: center; border-right: 1px solid rgba(187,88,26,.12);
-  flex-shrink: 0; padding: 20px 0; background: rgba(187,88,26,.02);
-}
-.dome-body { padding: 18px 22px; flex: 1; }
-.dome-tag { font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--nau-dat); margin-bottom: 4px; }
-.dome-title { font-family: var(--font-brand); font-weight: 700; font-size: 1.05rem; color: var(--text-primary); }
-.dome-sub { font-family: var(--font-hand); font-weight: 600; font-size: 1.15rem; color: var(--cam-hoang-hon); margin-top: 2px; }
-.dome-desc { font-size: .8rem; color: var(--text-muted); margin-top: 6px; line-height: 1.6; }
-
-.concept-side { position: sticky; top: 120px; }
-.concept-quote-card {
-  border: 1px solid rgba(187,88,26,.15);
-  padding: 40px 36px; position: relative;
-  background: #FFFFFF; box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-}
-.concept-quote-card::before {
-  content: ''; position: absolute; top: -2px; left: 32px; right: 32px; height: 3px;
-  background: linear-gradient(to right, transparent, var(--cam-hoang-hon), var(--vang-binh-minh), transparent);
-}
-.cq-label { font-size: .6rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--cam-hoang-hon); margin-bottom: 20px; display: block; }
-.cq-text {
-  font-family: var(--font-hand); font-size: 1.65rem; font-weight: 700;
-  color: var(--cam-hoang-hon); line-height: 1.45; margin-bottom: 24px;
-}
-.cq-body { font-family: var(--font-brand); font-style: italic; font-weight: 600; font-size: .95rem; color: var(--text-muted); line-height: 1.8; }
-.color-swatches { display: flex; gap: 8px; margin-top: 32px; flex-wrap: wrap; }
-.swatch { flex: 1; min-width: 44px; height: 44px; position: relative; display: flex; align-items: flex-end; padding: 4px 6px; border: 1px solid rgba(0,0,0,0.05); }
-.swatch-label { font-size: .5rem; font-weight: 600; letter-spacing: .08em; color: rgba(255,255,255,.9); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
-.info-strip {
-  margin-top: 20px; padding: 20px 24px;
-  background: #FFFFFF; border: 1px solid rgba(187,88,26,.1); border-left: 3px solid var(--cam-hoang-hon);
-}
-.info-strip p { font-size: .8rem; font-weight: 500; color: var(--text-muted); line-height: 1.8; }
-.info-strip p span { color: var(--cam-hoang-hon); font-weight: 600; }
-
-/* =================== ARTISTS =================== */
-#artists { background: var(--bg-dark); position: relative; overflow: hidden; border-top: 1px solid rgba(187,88,26,.05); border-bottom: 1px solid rgba(187,88,26,.05); }
-#artists::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(187,88,26,.04), transparent);
-}
-.artists-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 56px; }
-.artist-card {
-  position: relative; overflow: hidden; background: #FFFFFF;
-  border: 1px solid rgba(187,88,26,.1);
-  transition: border-color .3s, transform .35s, box-shadow .35s;
-}
-.artist-card:hover { border-color: var(--cam-hoang-hon); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(187,88,26,.08); }
-.artist-visual {
-  aspect-ratio: 3/4;
-  background: linear-gradient(160deg, var(--bg-mid) 0%, #E0D8CF 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 3.5rem; position: relative; overflow: hidden;
-}
-.artist-visual::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(255,255,255,.95) 0%, rgba(255,255,255,.1) 60%, transparent 100%);
-}
-.artist-card:hover .artist-visual { background: linear-gradient(160deg, rgba(187,88,26,.15) 0%, #E0D8CF 100%); }
-.artist-info { padding: 22px 20px 24px; position: relative; z-index: 2; background: #FFFFFF; }
-.artist-dome { font-size: .58rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--cam-hoang-hon); margin-bottom: 6px; }
-.artist-name { font-family: var(--font-brand); font-weight: 700; font-size: 1.15rem; color: var(--text-primary); margin-bottom: 4px; }
-.artist-role { font-family: var(--font-hand); font-weight: 600; font-size: 1.15rem; color: var(--nau-dat); line-height: 1.4; }
-
-/* =================== SCHEDULE =================== */
-#schedule { background: var(--bg-deep); }
-.sched-tabs { display: flex; gap: 0; margin-bottom: 52px; border-bottom: 1px solid rgba(187,88,26,.15); }
-.sched-tab {
-  background: none; border: none; border-bottom: 2px solid transparent;
-  color: var(--text-muted); font-family: var(--font-body); font-weight: 600;
-  font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-  padding: 14px 28px; cursor: pointer;
-  transition: color .25s, border-color .25s;
-  margin-bottom: -1px;
-}
-.sched-tab.on { color: var(--cam-hoang-hon); border-bottom-color: var(--cam-hoang-hon); }
-.sched-tab:hover:not(.on) { color: var(--text-primary); }
-.sched-pane { display: none; }
-.sched-pane.on { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.timeline-block {
-  background: #FFFFFF; border: 1px solid rgba(187,88,26,.15);
-  padding: 28px; opacity: 0; transform: translateY(16px);
-  transition: opacity .5s, transform .5s, box-shadow .3s;
-}
-.timeline-block:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.03); border-color: rgba(187,88,26,.3); }
-.timeline-block.vis { opacity: 1; transform: translateY(0); }
-.tb-time { font-size: .62rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--cam-hoang-hon); margin-bottom: 8px; }
-.tb-title { font-family: var(--font-brand); font-weight: 700; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 6px; }
-.tb-hand { font-family: var(--font-hand); font-weight: 600; font-size: 1.15rem; color: var(--nau-dat); }
-.tb-desc { font-size: .8rem; font-weight: 500; color: var(--text-muted); line-height: 1.65; margin-top: 8px; }
-
-/* =================== GIFTS =================== */
-#gifts { background: var(--bg-dark); border-top: 1px solid rgba(187,88,26,.05); }
-.gifts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
-
-/* Custom Gift Card for Images */
-.gift-card {
-  padding: 0; /* Changed from original to support full-width image */
-  border: 1px solid rgba(187,88,26,.1);
-  background: #FFFFFF; text-align: center;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column;
-}
-.gift-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 10;
-  background: var(--cam-hoang-hon); transform: scaleX(0); transform-origin: left;
-  transition: transform .35s;
-}
-.gift-card:hover { border-color: rgba(187,88,26,.3); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(187,88,26,.06); }
-.gift-card:hover::before { transform: scaleX(1); }
-
-/* Gift Image container */
-.gift-img {
-  width: 100%; height: 200px;
-  background-color: var(--bg-mid); /* Fallback color */
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid rgba(187,88,26,.05);
-}
-.gift-body {
-  padding: 24px; flex: 1;
-  display: flex; flex-direction: column; align-items: center;
-}
-.gift-tier { font-size: .58rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--cam-hoang-hon); margin-bottom: 8px; display: block; }
-.gift-name { font-family: var(--font-brand); font-weight: 700; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px; }
-.gift-hand { font-family: var(--font-hand); font-weight: 600; font-size: 1.2rem; color: var(--nau-dat); margin-bottom: 12px; }
-.gift-desc { font-size: .8rem; font-weight: 500; color: var(--text-muted); line-height: 1.7; }
-.gift-pill {
-  display: inline-block; border: 1px solid rgba(187,88,26,.3); color: var(--cam-hoang-hon); font-weight: 600;
-  font-size: .58rem; letter-spacing: .15em; text-transform: uppercase;
-  padding: 6px 16px; border-radius: 20px; background: rgba(187,88,26,.03);
-  margin-top: auto; /* Pushes the pill to the bottom so cards look equal height */
-}
-
-/* =================== YOUTUBE =================== */
-#youtube { background: var(--bg-deep); }
-.yt-frame {
-  width: auto; margin: 56px auto 0;
-  position: relative; padding-top: 56.25%;
-  border: 1px solid rgba(187,88,26,.15);
-  overflow: hidden; background: var(--bg-mid);
-}
-.yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-.yt-cover {
-  position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(248,245,242,.95));
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 22px; cursor: pointer;
-  transition: background .3s;
-}
-.yt-cover:hover { background: rgba(255,255,255,.98); }
-.yt-play {
-  width: 76px; height: 76px; background: var(--cam-hoang-hon); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem; color: #fff;
-  transition: transform .3s, background .3s, box-shadow .3s;
-  box-shadow: 0 10px 30px rgba(187,88,26,.3);
-}
-.yt-cover:hover .yt-play { transform: scale(1.1); background: var(--nau-dat); }
-.yt-label { font-family: var(--font-brand); font-weight: 700; font-style: italic; font-size: 1.1rem; color: var(--text-primary); text-align: center; }
-.yt-sub { font-size: .8rem; font-weight: 500; color: var(--text-muted); }
-.yt-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
-.yt-link {
-  display: inline-flex; align-items: center; gap: 8px; font-weight: 500;
-  border: 1px solid rgba(187,88,26,.2); padding: 10px 24px;
-  color: var(--text-primary); text-decoration: none; font-size: .78rem;
-  transition: border-color .2s, color .2s, background .2s; background: #FFFFFF;
-}
-.yt-link:hover { border-color: var(--cam-hoang-hon); color: var(--cam-hoang-hon); background: var(--bg-warm); }
-
-/* =================== REGISTER =================== */
-#register { background: var(--bg-dark); position: relative; overflow: hidden; border-top: 1px solid rgba(187,88,26,.05); }
-#register::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, var(--cam-hoang-hon), transparent); opacity: .5;
-}
-.reg-wrap {
-  max-width: 680px; margin: 0 auto;
-  background: #FFFFFF;
-  border: 1px solid rgba(187,88,26,.15);
-  padding: 60px; box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-  position: relative;
-}
-.reg-wrap::after {
-  content: ''; position: absolute; bottom: -2px; left: 80px; right: 80px; height: 3px;
-  background: linear-gradient(to right, transparent, var(--cam-hoang-hon), transparent);
-}
-.form-note-box {
-  background: rgba(187,88,26,.04); border-left: 3px solid var(--cam-hoang-hon);
-  padding: 16px 20px; margin-bottom: 32px; font-size: .82rem;
-  color: var(--text-muted); line-height: 1.8; font-weight: 500;
-}
-.form-note-box strong { color: var(--nau-dat); }
-.f-label {
-  display: block; font-size: .65rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--cam-hoang-hon); margin-bottom: 8px;
-}
-.f-req { color: var(--cam-hoang-hon); }
-.f-input {
-  width: 100%; background: #F8F5F2; border: 1px solid rgba(187,88,26,.15);
-  color: var(--text-primary); padding: 13px 16px;
-  font-family: var(--font-body); font-weight: 500; font-size: .88rem;
-  outline: none; border-radius: 0; transition: border-color .25s, background .25s; -webkit-appearance: none;
-}
-.f-input:focus { border-color: var(--cam-hoang-hon); background: #FFFFFF; }
-.f-input::placeholder { color: var(--text-muted); opacity: .7; }
-.f-input option { background: #FFFFFF; color: var(--text-primary); }
-.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.f-group { margin-bottom: 22px; }
-.f-err { font-size: .68rem; font-weight: 500; color: #C96060; margin-top: 6px; display: none; }
-.f-err.show { display: block; }
-.f-check { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-.f-check input[type=checkbox] {
-  appearance: none; -webkit-appearance: none;
-  width: 17px; height: 17px; min-width: 17px; margin-top: 2px;
-  border: 1px solid var(--cam-hoang-hon); background: #FFFFFF; cursor: pointer;
-  position: relative; transition: background .2s;
-}
-.f-check input[type=checkbox]:checked { background: var(--cam-hoang-hon); }
-.f-check input[type=checkbox]:checked::after { content: '✓'; position: absolute; top: -1px; left: 2px; color: #fff; font-size: 11px; font-weight: bold; }
-.f-check-label { font-size: .8rem; font-weight: 500; color: var(--text-muted); line-height: 1.65; }
-.f-check-label a { color: var(--cam-hoang-hon); text-decoration: none; font-weight: 600; }
-.btn-submit {
-  width: 100%; background: var(--cam-hoang-hon); color: #fff; border: none;
-  padding: 16px; font-family: var(--font-body); font-size: .88rem;
-  letter-spacing: .12em; text-transform: uppercase; font-weight: 600; cursor: pointer;
-  transition: background .25s, box-shadow .25s; margin-top: 8px;
-  box-shadow: 0 4px 15px rgba(187,88,26,.2);
-}
-.btn-submit:hover { background: var(--nau-dat); box-shadow: 0 6px 20px rgba(146,68,26,.3); }
-
-/* Custom Google Map Block */
-.map-block {
-  max-width: 680px; height: 350px; margin: 32px auto 0;
-  border: 1px solid rgba(187,88,26,.15);
-  background: #FFFFFF; padding: 8px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-}
-.map-block iframe {
-  width: 100%; height: 100%; border: none;
-}
-
-/* =================== FOOTER =================== */
-footer { background: var(--bg-deep); border-top: 1px solid rgba(187,88,26,.1); padding: 70px 0 32px; }
-
-/* CSS mới cho phần sườn footer */
-.footer-top-block { display: flex; align-items: start; gap: 40px; margin-bottom: 40px; }
-.footer-logo-wrap svg { width: 130px; }
-.footer-intro { font-size: .85rem; font-weight: 500; color: var(--text-primary); line-height: 1.8; flex: 1; }
-.footer-intro strong { color: var(--nau-dat); font-weight: 600; }
-
-footer hr { border-color: rgba(187,88,26,.15); margin: 40px 0; }
-
-.footer-cols { margin-top: 40px; }
-.footer-col-title { font-family: var(--font-brand); font-weight: 700; color: var(--text-primary); font-size: 1rem; margin-bottom: 20px; text-transform: none; letter-spacing: normal; }
-
-.footer-info { font-size: .8rem; font-weight: 500; color: var(--text-primary); line-height: 2; }
-.footer-info span { color: var(--cam-hoang-hon); font-weight: 600; }
-
-.footer-links { list-style: none; padding-left: 0; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a { color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: .85rem; transition: color .2s; }
-.footer-links a:hover { color: var(--cam-hoang-hon); }
-
-.footer-social-link { display: flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: .85rem; }
-.footer-social-link svg { width: 20px; height: 20px; color: var(--text-primary); }
-
-.footer-note { font-size: .8rem; font-weight: 500; color: var(--text-muted); margin-top: 40px; line-height: 1.8; }
-.footer-note a { color: var(--cam-hoang-hon); text-decoration: none; font-weight: 600; }
-
-.footer-bottom {
-  margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(187,88,26,.1);
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
-}
-.footer-copy { font-size: .72rem; font-weight: 500; color: var(--text-muted); }
-.footer-hand { font-family: var(--font-hand); font-weight: 600; font-size: 1.1rem; color: rgba(187,88,26,.7); }
-
-/* =================== MODAL =================== */
-.modal-bg {
-  display: none; position: fixed; inset: 0; z-index: 900;
-  background: rgba(255,255,255,.95); align-items: center; justify-content: center; padding: 20px;
-}
-.modal-bg.open { display: flex; animation: mFade .3s; }
-@keyframes mFade { from{opacity:0;} to{opacity:1;} }
-.modal-box {
-  background: #FFFFFF; border: 1px solid var(--cam-hoang-hon);
-  padding: 52px 48px; max-width: 520px; width: 100%; position: relative; text-align: center;
-  animation: mRise .4s; box-shadow: 0 15px 50px rgba(0,0,0,0.05);
-}
-@keyframes mRise { from{transform:translateY(24px);opacity:0;} to{transform:translateY(0);opacity:1;} }
-.modal-close {
-  position: absolute; top: 16px; right: 20px;
-  background: none; border: none; color: var(--text-muted); font-size: 1.1rem; cursor: pointer;
-  transition: color .2s;
-}
-.modal-close:hover { color: var(--cam-hoang-hon); }
-.modal-icon { font-size: 2.8rem; margin-bottom: 20px; display: block; }
-.modal-title { font-family: var(--font-brand); font-weight: 700; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 10px; }
-.modal-hand { font-family: var(--font-hand); font-weight: 600; font-size: 1.3rem; color: var(--nau-dat); margin-bottom: 14px; }
-.modal-desc { font-size: .85rem; font-weight: 500; color: var(--text-muted); line-height: 1.8; }
-.modal-summary {
-  margin-top: 22px; padding: 18px 20px;
-  background: #F8F5F2; border: 1px solid rgba(187,88,26,.15);
-  font-size: .82rem; color: var(--nau-dat); font-weight: 500; text-align: left; line-height: 2.1;
-}
-.modal-note { font-size: .75rem; font-weight: 500; color: var(--text-muted); margin-top: 14px; line-height: 1.7; }
-.modal-note a { color: var(--cam-hoang-hon); text-decoration: none; font-weight: 600; }
-.modal-btn {
-  margin-top: 24px; background: var(--cam-hoang-hon); color: #fff; border: none;
-  padding: 12px 40px; font-family: var(--font-body); font-size: .82rem;
-  letter-spacing: .1em; text-transform: uppercase; font-weight: 600; cursor: pointer;
-  transition: background .25s, box-shadow .25s;
-}
-.modal-btn:hover { background: var(--nau-dat); box-shadow: 0 4px 15px rgba(187,88,26,.2); }
-
-/* =================== RESPONSIVE =================== */
-@media (max-width: 1100px) {
-  .artists-grid { grid-template-columns: repeat(4, 1fr); }
-}
-@media (max-width: 991px) {
-  .concept-grid { grid-template-columns: 1fr; gap: 56px; }
-  .concept-side { position: static; }
-  .artists-grid { grid-template-columns: repeat(2, 1fr); }
-  .gifts-grid { grid-template-columns: repeat(2, 1fr); }
-  .sched-pane.on { grid-template-columns: 1fr; }
-  .f-row { grid-template-columns: 1fr; }
-  .reg-wrap { padding: 40px 28px; }
-  .site-nav { padding: 18px 24px; }
-  .site-nav.stuck { padding: 12px 24px; }
-}
-@media (max-width: 768px) {
-  .nav-menu { display: none; }
-  .nav-menu.open {
-    display: flex; flex-direction: column; gap: 0;
-    position: absolute; top: 60px; left: 0; right: 0;
-    background: rgba(255,255,255,.98); border-top: 1px solid rgba(187,88,26,.1);
-    padding: 16px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  }
-  .nav-menu.open li a { padding: 12px 28px; display: block; color: var(--text-primary); }
-  .nav-burger { display: flex; }
-  section { padding: 80px 0; }
-  .gifts-grid { grid-template-columns: 1fr; }
-  .modal-box { padding: 36px 24px; }
-}
-@media (max-width: 480px) {
-  .artists-grid { grid-template-columns: 1fr 1fr; }
-  .sched-tabs { flex-wrap: wrap; }
-  .hero-meta-item + .hero-meta-item { border-left: none; border-top: 1px solid rgba(187,88,26,.15); padding-top: 14px; }
-  .hero-meta-row { flex-direction: column; }
-}
-/* =================== SINGLE COUNTER =================== */
-.single-counter-box {
-  max-width: 680px;
-  margin: 32px auto 48px auto; /* Căn giữa và tạo khoảng cách trên dưới */
-  background: rgba(255, 255, 255, 0.7); /* Nền trắng hơi trong suốt */
-  border: 1px solid rgba(187, 88, 26, 0.2);
-  border-radius: 16px; /* Bo góc tròn giống ảnh mẫu */
-  padding: 48px 20px;
-  text-align: center;
-  backdrop-filter: blur(8px); /* Hiệu ứng kính mờ */
-  box-shadow: 0 10px 30px rgba(187, 88, 26, 0.05);
-}
-.sc-num {
-  display: block;
-  font-family: var(--font-brand);
-  font-weight: 700;
-  font-size: 4rem; /* Kích thước số to, nổi bật */
-  color: var(--cam-hoang-hon);
-  line-height: 1;
-  margin-bottom: 12px;
-}
-.sc-text {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.5;
-  display: block;
-}
-@media (max-width: 768px) {
-  .single-counter-box { padding: 36px 20px; border-radius: 12px; }
-  .sc-num { font-size: 3.2rem; }
-}
-.artist-visual img {
-  width: 100%; /* Tỷ lệ chiều rộng so với khung nền */
-  height: 100%; /* Tỷ lệ chiều cao so với khung nền */
-  object-fit: cover; /* Đảm bảo ảnh không bị méo */
-  position: relative;
-  z-index: 2; /* Giúp ảnh nổi lên trên lớp viền/nền gradient */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Đổ bóng nhẹ giúp ảnh tách bạch khỏi nền */
-  transition: transform 0.4s ease;
-}
-
-/* Thêm hiệu ứng zoom nhẹ ảnh khi người dùng di chuột vào thẻ */
-.artist-card:hover .artist-visual img {
-  transform: scale(1.05);
-}
-/* Tùy chỉnh icon FontAwesome */
-.footer-social-link i { 
-  font-size: 1.1rem; 
-  width: 20px; /* Cố định chiều rộng để text thẳng hàng */
-  text-align: center;
-  color: var(--text-primary); 
-  transition: color .2s;
-}
-.footer-social-link:hover i { color: var(--cam-hoang-hon); }
-
-/* Responsive riêng cho Footer trên Mobile */
-@media (max-width: 768px) {
-  footer { padding: 50px 0 24px; }
-  
-  /* Đẩy logo và text giới thiệu xếp dọc xuống thay vì nằm ngang */
-  .footer-top-block { 
-    flex-direction: column; 
-    gap: 20px; 
-    margin-bottom: 30px; 
-  }
-  
-  /* Giảm khoảng cách phần đường kẻ */
-  footer hr { margin: 30px 0; }
-  
-  /* Căn chỉnh lại khoảng cách các cột trên mobile */
-  .footer-cols .col-md-6, .footer-cols .col-md-12 {
-    margin-bottom: 10px;
-  }
-  
-  /* Đưa phần bản quyền và chữ nghệ thuật xếp dọc, căn giữa */
-  .footer-bottom { 
-    flex-direction: column; 
-    text-align: center; 
-    gap: 16px; 
-  }
-}
-</style>
 </head>
+
 <body>
 
-<nav class="site-nav" id="siteNav">
-  <a href="#" class="nav-logo">
-    <img height="40px" src="assets/images/VP_Logo-website-header-2-e1745916306520.png" alt="">
-  </a>
-  <ul class="nav-menu" id="navMenu">
-    <li><a href="#concept">Triển lãm</a></li>
-    <li><a href="#artists">Nghệ sĩ</a></li>
-    <li><a href="#schedule">Lịch trình</a></li>
-    <li><a href="#gifts">Quà tặng</a></li>
-    <li><a href="#youtube">MV</a></li>
-    <li><a href="#register" class="nav-cta-btn">Đăng ký</a></li>
-  </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+    <header class="site-header">
+        <a href="#">
+            <img class="logo-default" src="assets/images/VanPhu_Logo_Doc_Cam Trang.png" alt="Logo Trắng">
+            <img class="logo-scrolled" src="assets/images/VanPhu_Logo_Doc-01.png" alt="Logo Đen">
+        </a>
+    </header>
 
-<section id="hero">
-  <div class="hero-cinematic-bg"></div>
-  <div class="hero-paint"></div>
-  <div class="hero-windows-grid">
-    <div class="hw"></div><div class="hw"></div><div class="hw"></div><div class="hw"></div><div class="hw"></div>
-    <div class="hw"></div><div class="hw"></div><div class="hw"></div><div class="hw"></div><div class="hw"></div>
-    <div class="hw"></div><div class="hw"></div><div class="hw"></div><div class="hw"></div><div class="hw"></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Triển lãm đa giác quan · Tháng 4 · 2026</div>
-    <span class="hero-title-brand">Văn Phú trân trọng giới thiệu</span>
-    <span class="hero-title-main">Muôn vị nhân sinh</span>
-    <span class="hero-title-sub">Từ nhịp sống thành thị đến trái tim bạn</span>
-    <div class="hero-meta-row">
-      <div class="hero-meta-item">
-        <span class="hm-label">Thời gian</span>
-        <span class="hm-val">3 – 5 Tháng 4, 2026</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hm-label">Địa điểm</span>
-        <span class="hm-val">Tòa Exhibition · Công viên 23/9 · TP.HCM</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hm-label">Giờ mở cửa</span>
-        <span class="hm-val">09:00 – 21:00</span>
-      </div>
-    </div>
-    <div class="hero-actions">
-      <a href="#register" class="btn-fill">Đăng ký tham dự</a>
-      <a href="#concept" class="btn-ghost">Khám phá triển lãm</a>
-    </div>
-  </div>
-  <div class="hero-scroll-hint">
-    <span>Cuộn xuống</span>
-    <div class="scroll-tick"></div>
-  </div>
-</section>
 
-<section id="concept">
-  <div class="container">
-    <div class="concept-grid">
-      <div>
-        <span class="sec-eyebrow ao">01 · Về triển lãm</span>
-        <h2 class="sec-h ao ao-d1">
-          Kiến tạo<br>
-          <span class="hand-accent">không gian sống</span><br>
-          là kiến tạo văn hóa
-        </h2>
-        <div class="sec-rule ao ao-d2"></div>
-        <p class="sec-lead ao ao-d2">
-          Một không gian trải nghiệm đa giác quan — nơi nhịp sống Sài Gòn gặp gỡ những tâm hồn vị nhân sinh. Triển lãm được thiết kế như một hành trình đi qua những "ô cửa" — nơi ký ức, nhịp sống, văn hóa và ước mơ giao thoa cùng triết lý phát triển bất động sản của Văn Phú.
-        </p>
+    <section class="banner-section">
+        <picture>
+            <source media="(max-width: 767px)" srcset="assets/images/banner_mobile.png">
+            <img src="assets/images/banner_desktop.png" alt="Banner Không Gian Nghệ Thuật">
+        </picture>
+    </section>
 
-        <div class="dome-list ao ao-d3">
-          <div class="dome-row">
-            <div class="dome-num">01</div>
-            <div class="dome-body">
-              <div class="dome-tag">Dome 1 · Check-in</div>
-              <div class="dome-title">Một lời chào –</div>
-              <div class="dome-sub">Muôn vị ấm</div>
-              <div class="dome-desc">Trải nghiệm "Chạm & Mở" · Lời chào từ Văn Phú theo quê quán mỗi người · Quầy thông tin tư vấn</div>
+    <div class="art-outer">
+        <div class="art-section">
+            <div class="art-left">
+                <div class="art-top">
+                    <div class="art-title-small" data-aos="fade-right">Không <br> gian</div>
+                    <div class="art-title-big mb-3" data-aos="fade-right" data-aos-delay="100">nghệ thuật tương tác
+                    </div>
+                </div>
+
+                <div class="art-desc mb-3" data-aos="fade-up" data-aos-delay="200">Hành trình viễn du đa giác quan, đưa
+                    bạn bước vào những không gian nghệ thuật tương tác, đắm mình trong những màn trình diễn thị giác,
+                    thanh âm và khám phá các tác phẩm nguyên bản của nghệ sĩ Việt. Mỗi điểm chạm là một trải nghiệm đắt
+                    giá, dẫn lối bạn khám phá Muôn Vị Nhân Sinh theo cách riêng.</div>
             </div>
-          </div>
-          <div class="dome-row">
-            <div class="dome-num">02</div>
-            <div class="dome-body">
-              <div class="dome-tag">Dome 2 · Triển lãm ảnh</div>
-              <div class="dome-title">Muôn sắc Sài Gòn</div>
-              <div class="dome-sub">"Phố ở trong phố"</div>
-              <div class="dome-desc">NAG Kmon Nguyễn · Street Performance · VR Immersive · Tai nghe âm thanh đường phố SG</div>
+
+            <img class="art-main-img-mobile" src="assets/images/art-main-img.png" alt="Nghệ thuật tương tác" />
+
+            <div class="art-slide-row">
+                <div class="swiper artSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="assets/images/a.png" alt="Slide 1" /></div>
+                        <div class="swiper-slide"><img src="assets/images/a.png" alt="Slide 2" /></div>
+                        <div class="swiper-slide"><img src="assets/images/a.png" alt="Slide 3" /></div>
+                        <div class="swiper-slide"><img src="assets/images/a.png" alt="Slide 4" /></div>
+                        <div class="swiper-slide"><img src="assets/images/a.png" alt="Slide 5" /></div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="dome-row">
-            <div class="dome-num">03</div>
-            <div class="dome-body">
-              <div class="dome-tag">Dome 3 · Mapping 360°</div>
-              <div class="dome-title">Muôn màu văn hóa</div>
-              <div class="dome-sub">Những cánh cửa kể chuyện</div>
-              <div class="dome-desc">Projection mapping 360° · Nghệ thuật hội họa đương đại · Sài Gòn tâm linh & truyền thống</div>
-            </div>
-          </div>
-          <div class="dome-row">
-            <div class="dome-num">04</div>
-            <div class="dome-body">
-              <div class="dome-tag">Dome 4 · VIP Experience Lounge</div>
-              <div class="dome-title">Muôn vị ước mơ</div>
-              <div class="dome-sub">Vẽ ước mơ bay lên bầu trời</div>
-              <div class="dome-desc">Interactive mapping · Cocktail độc bản · Catalogue nhà mơ ước · Artwork Văn Phú</div>
-            </div>
-          </div>
-          <div class="dome-row">
-            <div class="dome-num">05</div>
-            <div class="dome-body">
-              <div class="dome-tag">Dome 5 · F&B · Workshop · Gift</div>
-              <div class="dome-title">Muôn niềm vui nhỏ</div>
-              <div class="dome-sub">& muôn điều xanh nhỏ</div>
-              <div class="dome-desc">Workshop Terrarium · Homentor Talkshow · Merchandise cá nhân hóa · Đồ uống miễn phí</div>
-            </div>
-          </div>
         </div>
-      </div>
 
-      <div class="concept-side">
-        <div class="concept-quote-card ao ao-d2">
-          <span class="cq-label">Thông điệp triển lãm</span>
-          <p class="cq-text">"Giữa Sài Gòn đất chật người đông, liệu bạn đã tìm thấy Tổ ấm của riêng mình?"</p>
-          <p class="cq-body">
-            Văn Phú không "đo ni đóng giày" nơi ở như các khuôn mẫu khác. Văn Phú mong muốn kiến tạo một Ngôi Nhà để bạn thuộc về — dù bạn đơn độc hay sum vầy, dù trái tim đầy vết thương hay đã được chữa lành.
+        <img class="art-main-img-desktop" src="assets/images/art-main-img.png" alt="Nghệ thuật tương tác" />
+    </div>
+
+    <div class="artist-section">
+        <div class="artist-header text-center">
+            <div class="artist-subtitle mb-3" data-aos="fade-up">Nghệ sĩ đồng hành</div>
+            <div class="artist-title-1" data-aos="fade-up" data-aos-delay="100">Tôn vinh những tiếng nói <br> nghệ thuật
+            </div>
+            <div class="artist-title-2 text-end" data-aos="fade-up" data-aos-delay="200">vị nhân sinh mới tại Việt Nam
+            </div>
+        </div>
+
+        <div class="artist-cards" data-aos="fade-up">
+
+            <div class="artist-card">
+                <img src="assets/images/artist2.png" alt="Kmom Nguyễn" />
+                <div class="artist-card-info">
+                    <div class="artist-card-name">Kmom Nguyễn</div>
+                    <div class="artist-card-desc">Vinh Khuất tên đầy đủ là Khuất Duy Vinh, sinh ngày 20 tháng 3 năm 1990
+                        tại
+                        Hà Nội trong một gia đình có truyền thống âm nhạc. Ông ngoại là nghệ sĩ Nguyễn Minh Tâm dạy
+                        accordion, saxophone; mẹ anh làm quản lý một Nhà văn hóa.</div>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <img src="assets/images/artist1.png" alt="Hoàng Dũng" />
+                <div class="artist-card-info">
+                    <div class="artist-card-name">Hoàng Dũng</div>
+                    <div class="artist-card-desc">Vinh Khuất tên đầy đủ là Khuất Duy Vinh, sinh ngày 20 tháng 3 năm 1990
+                        tại
+                        Hà Nội trong một gia đình có truyền thống âm nhạc. Ông ngoại là nghệ sĩ Nguyễn Minh Tâm dạy
+                        accordion, saxophone; mẹ anh làm quản lý một Nhà văn hóa.</div>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <img src="assets/images/artist3.png" alt="Vũ Cát Tường" />
+                <div class="artist-card-info">
+                    <div class="artist-card-name">Vũ Cát Tường</div>
+                    <div class="artist-card-desc">Vinh Khuất tên đầy đủ là Khuất Duy Vinh, sinh ngày 20 tháng 3 năm 1990
+                        tại
+                        Hà Nội trong một gia đình có truyền thống âm nhạc. Ông ngoại là nghệ sĩ Nguyễn Minh Tâm dạy
+                        accordion, saxophone; mẹ anh làm quản lý một Nhà văn hóa.</div>
+                </div>
+            </div>
+
+            <div class="artist-card active">
+                <img src="assets/images/artist5.png" alt="Phan Mạnh Quỳnh" />
+                <div class="artist-card-info">
+                    <div class="artist-card-name">Phan Mạnh Quỳnh</div>
+                    <div class="artist-card-desc">Vinh Khuất tên đầy đủ là Khuất Duy Vinh, sinh ngày 20 tháng 3 năm 1990
+                        tại
+                        Hà Nội trong một gia đình có truyền thống âm nhạc. Ông ngoại là nghệ sĩ Nguyễn Minh Tâm dạy
+                        accordion, saxophone; mẹ anh làm quản lý một Nhà văn hóa.</div>
+                </div>
+            </div>
+
+            <div class="artist-card">
+                <img src="assets/images/artist4.png" alt="Dzung" />
+                <div class="artist-card-info">
+                    <div class="artist-card-name">Dzung</div>
+                    <div class="artist-card-desc">Vinh Khuất tên đầy đủ là Khuất Duy Vinh, sinh ngày 20 tháng 3 năm 1990
+                        tại
+                        Hà Nội trong một gia đình có truyền thống âm nhạc. Ông ngoại là nghệ sĩ Nguyễn Minh Tâm dạy
+                        accordion, saxophone; mẹ anh làm quản lý một Nhà văn hóa.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="theater-section">
+        <div class="theater-inner">
+            <div class="theater-title-wrapper" data-aos="fade-down">
+                <div class="theater-subtitle">Vở nhạc kịch</div>
+                <div class="theater-main-title text-end">Tổ ấm đáng giá bao nhiêu?</div>
+            </div>
+
+            <div class="theater-desc" data-aos="fade-up" data-aos-delay="100">
+                Một vở nhạc kịch đa chiều dẫn dắt bạn đi từ những đong đếm hữu hình của "giá" đến chiều sâu của "giá
+                trị" - nơi tổ ấm được định nghĩa lại bằng cảm xúc.
+            </div>
+
+            <div class="theater-time-wrapper">
+                <div class="theater-time-slot" data-aos="fade-up" data-aos-delay="0">11:00 - 11:30</div>
+                <div class="theater-time-slot" data-aos="fade-up" data-aos-delay="100">15:00 - 15:30</div>
+                <div class="theater-time-slot" data-aos="fade-up" data-aos-delay="200">19:30 - 20:00</div>
+            </div>
+        </div>
+
+        <div class="theater-slider-wrapper">
+            <div class="swiper theaterSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide1.png" alt="Cảnh 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide2.png" alt="Cảnh 2" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide3.png" alt="Cảnh 3" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide1.png" alt="Cảnh 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide2.png" alt="Cảnh 2" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide3.png" alt="Cảnh 3" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide1.png" alt="Cảnh 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide2.png" alt="Cảnh 2" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="theater-slide-img" src="assets/images/swiper-slide3.png" alt="Cảnh 3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+        <div class="pmq-section">
+            <div class="pmq-header">
+                <div class="pmq-subtitle" data-aos="fade-up">VĂN PHÚ X PHAN MẠNH QUỲNH</div>
+                <div class="pmq-title-group">
+                    <p class="pmq-title-gold" data-aos="fade-up" data-aos-delay="100">Hành trình</p>
+                    <p class="pmq-title-script" data-aos="fade-up" data-aos-delay="200">Muôn vị nhân sinh</p>
+                </div>
+            </div>
+
+            <div class="youtube-wrapper" data-aos="fade-up" data-aos-delay="100">
+                <iframe class="youtube-iframe" src="https://www.youtube.com/embed/CHvGZbg4-qM"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+
+            <div class="pmq-carousel-area">
+                <div class="swiper pmqSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://dantri.com.vn/bat-dong-san/mv-muon-vi-nhan-sinh-khi-bat-dong-san-duoc-ke-bang-am-nhac-20260311114034743.htm"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper1.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://reatimes.vn/nhac-si-phan-manh-quynh-giua-do-thi-rong-lon-ai-cung-can-mot-noi-de-thuoc-ve-202260315091415253.htm?fbclid=IwdGRjcAQm8qVleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEeI6tGEecboWjZ896mpPU6GmEFqLTvrecwWkCI0tdxhWOMzQ_hwYYtcBXvYSc_aem_EfgYY40m78tLKhbeWODdIw"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper2.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://cafeland.vn/tin-tuc/muon-vi-nhan-sinh-khi-cau-chuyen-ve-nha-duoc-ke-bang-ngon-ngu-dien-anh-149869.html"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper3.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://cafeland.vn/tin-tuc/muon-vi-nhan-sinh-khi-cau-chuyen-ve-nha-duoc-ke-bang-ngon-ngu-dien-anh-149869.html"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper4.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://dantri.com.vn/bat-dong-san/mv-muon-vi-nhan-sinh-khi-bat-dong-san-duoc-ke-bang-am-nhac-20260311114034743.htm"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper1.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://reatimes.vn/nhac-si-phan-manh-quynh-giua-do-thi-rong-lon-ai-cung-can-mot-noi-de-thuoc-ve-202260315091415253.htm?fbclid=IwdGRjcAQm8qVleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEeI6tGEecboWjZ896mpPU6GmEFqLTvrecwWkCI0tdxhWOMzQ_hwYYtcBXvYSc_aem_EfgYY40m78tLKhbeWODdIw"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper2.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://cafeland.vn/tin-tuc/muon-vi-nhan-sinh-khi-cau-chuyen-ve-nha-duoc-ke-bang-ngon-ngu-dien-anh-149869.html"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper3.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide pmq-card">
+                            <a href="https://cafeland.vn/tin-tuc/muon-vi-nhan-sinh-khi-cau-chuyen-ve-nha-duoc-ke-bang-ngon-ngu-dien-anh-149869.html"
+                                target="_blank">
+                                <img class="pmq-card-img" src="assets/images/swiper4.png" alt="Thumbnail" />
+                                <div class="pmq-badge">
+                                    <img src="assets/images/logo_cate.png" alt="Logo" />
+                                    <span>Hợp âm Việt</span>
+                                </div>
+                                <div class="pmq-card-content">
+                                    <div class="pmq-card-title">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”</div>
+                                    <div class="pmq-card-desc">Phan Mạnh Quỳnh và “Muôn vị nhân sinh”: Hành trình trở về
+                                        sau
+                                        những nếm trải cuộc đời</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-pagination pmq-pagination mt-2"></div>
+            </div>
+        </div>
+
+        <div class="register-section">
+            <div class="register-info">
+                <div class="register-title">ĐĂNG KÍ THAM DỰ</div>
+
+                <div class="register-counter text-center">
+                    <div class="num-wrapper justify-content-center">
+                        <span>15432</span>
+                    </div>
+                    <p class="text text-center">người tham gia</p>
+                </div>
+
+                <div class="register-desc">
+                    Đăng ký miễn phí — nhận vé QR qua email để tham gia Triển lãm.
+                </div>
+
+                <div class="map-wrapper bg-white p-2">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.451201532161!2d106.7110132!3d10.776713100000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fdfe60475df%3A0x5bb180a589dc8baa!2zVGjhu6cgVGhpw6ptIFJpdmVyc3RhZ2UgLSBDw7RuZyBWacOqbiBC4budIFPDtG5nIFRo4bunIFRoacOqbQ!5e0!3m2!1sen!2s!4v1774414117072!5m2!1sen!2s"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="register-form-box">
+                <form id="registerForm" action="#" method="POST" class="d-flex flex-column" style="gap: 24px;">
+
+                    <div class="form-group">
+                        <label class="form-label">HỌ VÀ TÊN <span>*</span></label>
+                        <input type="text" class="form-input" placeholder="Nguyễn Văn A" required />
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">EMAIL <span>*</span></label>
+                            <input type="email" class="form-input" placeholder="example@gmail.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">SỐ ĐIỆN THOẠI <span>*</span></label>
+                            <input type="tel" class="form-input" placeholder="0123456789" required />
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox-group">
+                        <input type="checkbox" class="form-checkbox" id="consent" required />
+                        <label for="consent" class="form-checkbox-text">
+                            Tôi đồng ý nhận thông tin và chương trình ưu đãi từ Văn Phú qua email. Thông tin cá nhân
+                            được bảo mật theo <a href="#">Chính sách Bảo vệ Dữ liệu</a> của Công ty Cổ phần Đầu tư Văn
+                            Phú – Invest (Nghị định 13/2023/NĐ-CP).
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">NGÀY THAM DỰ <span>*</span></label>
+                        <div class="date-options">
+                            <button type="button" class="date-btn active">17/4 Thứ Sáu</button>
+                            <button type="button" class="date-btn">18/4 Thứ Bảy</button>
+                            <button type="button" class="date-btn">19/4 Chủ Nhật</button>
+                        </div>
+                    </div>
+
+                    <div class="form-notice">
+                        <span>Lưu ý quan trọng:</span><br />
+                        • Mỗi lượt đăng ký dành cho <span>1 người</span> lớn đi kèm 1 trẻ em dưới 16 tuổi tham dự.<br />
+                        • Trẻ em dưới 16 tuổi cần có người bảo hộ đăng ký.<br />
+                        • Bạn có thể thay đổi ngày tham dự <span>không cần đăng ký lại.</span><br />
+                        • Sau khi đăng ký, vui lòng kiểm tra email để nhận vé QR từ BTC.
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Đăng kí tham dự
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+
+            <!-- Logo + mô tả -->
+            <div class="footer-top">
+                <img class="footer-logo" src="assets/images/VanPhu_Logo_Doc_Cam Trang.png" alt="Văn Phú Logo" />
+                <p class="footer-desc">
+                    Thành lập từ năm 2003, Công ty Cổ phần Phát triển Bất động sản Văn Phú không chỉ là nhà đầu tư
+                    mà còn thể hiện vai trò trong toàn bộ quá trình thực hiện dự án bất động sản: từ khâu nghiên cứu,
+                    phát triển, thiết kế, quản lý xây dựng thi công, vận hành và khai thác sau đầu tư. Doanh nghiệp
+                    nhanh chóng trở thành một trong những đối tác đáng tin cậy và uy tín trong ngành xây dựng cũng như
+                    phát triển dự án. Với tầm nhìn Vị nhân sinh, Văn Phú từng bước khẳng định vị thế trong lĩnh vực
+                    bất động sản tại Việt Nam.
+                </p>
+            </div>
+
+            <!-- 3 cột: Liên hệ / Khám phá / Mạng xã hội -->
+            <div class="footer-middle">
+
+                <div class="footer-col">
+                    <span class="footer-col-title">LIÊN HỆ</span>
+                    <div class="footer-col-text">
+                        <a href="https://maps.google.com/?q=104+Thái+Thịnh,+Đống+Đa,+Hà+Nội" target="_blank">
+                            Địa chỉ: 104 phố Thái Thịnh, Phường Trung Liệt,<br />
+                            Quận Đống Đa, Hà Nội, Việt Nam
+                        </a>
+                        <a href="tel:+842462583535">Hotline: (+84) 24 6258 3535</a>
+                        <a href="fax:+842462583636">Fax: (+84) 24 6258 3636</a>
+                        <a href="mailto:info@vanphu.vn">Email: info@vanphu.vn</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <span class="footer-col-title">KHÁM PHÁ</span>
+                    <div class="footer-col-text">
+                        <a href="#">Thông tin Văn Phú</a>
+                        <a href="#">Dự án</a>
+                        <a href="#">Tin tức</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-social-title">KẾT NỐI VỚI CHÚNG TÔI</div>
+                    <div class="footer-social-icons">
+                        <!-- Facebook -->
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="#BB581A" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#BB581A" stroke-width="2"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="0.5" fill="#BB581A" />
+                            </svg>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="#BB581A" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Policy -->
+            <div class="footer-policy">
+                Công ty chỉ xử lý dữ liệu bạn cung cấp để liên hệ tư vấn sản phẩm, dịch vụ của Công ty. Vui lòng xem
+                <a href="#">Quy định bảo vệ dữ liệu cá nhân khách hàng, đối tác (gọi chung là "Quy định")</a>.
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                © Copyright 2023 by Van Phu. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- modal -->
+    <div class="modal-overlay" id="successModal">
+      <div class="modal-box">
+          <button class="modal-close" id="modalClose">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+          </button>
+
+          <div class="modal-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#BB581A" opacity="0.15"/>
+                  <path d="M7 12.5L10.5 16L17 9" stroke="#BB581A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </div>
+
+          <div class="modal-tag">Đăng ký thành công</div>
+
+          <h2 class="modal-title">Hẹn gặp bạn tại<br/>Không Gian Nghệ Thuật!</h2>
+
+          <p class="modal-desc">
+              Cảm ơn bạn đã đăng ký tham dự.<br/>
+              Vé QR đã được gửi đến email của bạn.
           </p>
-          <div style="margin-top:28px;">
-            <div style="font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Bảng màu thương hiệu</div>
-            <div class="color-swatches">
-              <div class="swatch" style="background:#BB581A;"><span class="swatch-label">Cam hoàng hôn</span></div>
-              <div class="swatch" style="background:#92441A;"><span class="swatch-label">Nâu đất</span></div>
-              <div class="swatch" style="background:#DEB243;"><span class="swatch-label" style="color:#2B1509; text-shadow:none;">Vàng bình minh</span></div>
-              <div class="swatch" style="background:#8F8940;"><span class="swatch-label">Xanh rêu</span></div>
-              <div class="swatch" style="background:#1D6258;"><span class="swatch-label">Lục lá</span></div>
-            </div>
+
+          <div class="modal-info-box">
+              <div class="modal-info-row">
+                  <span class="label">Địa điểm</span>
+                  <span class="value">Công viên 23 Tháng 9, TP.HCM</span>
+              </div>
+              <div class="modal-info-row">
+                  <span class="label">Ngày tham dự</span>
+                  <span class="value" id="modalDate">—</span>
+              </div>
           </div>
-        </div>
 
-        <div class="info-strip ao ao-d3" style="margin-top:20px;">
-          <p>
-            <span>Địa điểm:</span> Tòa Exhibition · Công viên 23 tháng 9 · TP.HCM<br>
-            <span>Thời gian:</span> 3–5 Tháng 4, 2026 · 09:00–21:00<br>
-            <span>Liên hệ:</span> info@vanphu.vn · (+84) 24 6258 3535
-          </p>
-        </div>
+          <button class="modal-btn" id="modalCloseBtn">Đã hiểu, hẹn gặp lại!</button>
 
-        <div style="margin-top:20px;text-align:center;" class="ao ao-d4">
-          <a href="#register" class="btn-fill" style="display:inline-block;">Đăng ký ngay →</a>
-        </div>
+          <p class="modal-note">Vui lòng kiểm tra hộp thư (kể cả Spam)<br/>để nhận vé QR từ Ban tổ chức.</p>
       </div>
-    </div>
   </div>
-</section>
 
-<section id="artists">
-  <div class="container">
-    <span class="sec-eyebrow ao">02 · Nghệ sĩ</span>
-    <h2 class="sec-h ao ao-d1">
-      Những tên tuổi<br>
-      <span class="hand-accent">tham gia</span>
-    </h2>
-    <div class="sec-rule ao ao-d2"></div>
-
-    <div class="artists-grid">
-      <div class="artist-card ao ao-d1">
-        <div class="artist-visual">
-          <img src="assets/images/artist1.jpg" alt="Kmon Nguyễn">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Dome 2 · Nhiếp ảnh</div>
-          <div class="artist-name">Kmon Nguyễn</div>
-          <div class="artist-role">phố ở trong phố</div>
-        </div>
-      </div>
-      
-      <div class="artist-card ao ao-d2">
-        <div class="artist-visual">
-          <img src="assets/images/artist5.jpg" alt="Phan Mạnh Quỳnh">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Đêm nhạc · Ca sĩ</div>
-          <div class="artist-name">Phan Mạnh Quỳnh</div>
-          <div class="artist-role">acoustic & cảm xúc</div>
-        </div>
-      </div>
-
-      <div class="artist-card ao ao-d3">
-        <div class="artist-visual">
-          <img src="assets/images/artist6.jpg" alt="Hoàng Dũng">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Đêm nhạc · Ca sĩ</div>
-          <div class="artist-name">Hoàng Dũng</div>
-          <div class="artist-role">nhịp sống thành phố</div>
-        </div>
-      </div>
-
-      <div class="artist-card ao ao-d4">
-        <div class="artist-visual">
-          <img src="assets/images/artist7.jpg" alt="Vũ Cát Tường">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Đêm nhạc · Ca sĩ</div>
-          <div class="artist-name">Vũ Cát Tường</div>
-          <div class="artist-role">trái tim của ta thuộc về</div>
-        </div>
-      </div>
-
-      <div class="artist-card ao ao-d1">
-        <div class="artist-visual">
-          <img src="assets/images/artist2.jpg" alt="Paradox Band">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Đêm nhạc · Ban nhạc</div>
-          <div class="artist-name">Paradox Band</div>
-          <div class="artist-role">Sài Gòn không ngủ</div>
-        </div>
-      </div>
-
-      <div class="artist-card ao ao-d2">
-        <div class="artist-visual">
-          <img src="assets/images/artist2.jpg" alt="Phan Tú Trân">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Dome 3 & 4 · Họa sĩ</div>
-          <div class="artist-name">Phan Tú Trân</div>
-          <div class="artist-role">màu nước & nhân sinh</div>
-        </div>
-      </div>
-
-      <div class="artist-card ao ao-d3">
-        <div class="artist-visual">
-          <img src="assets/images/artist3.jpg" alt="Việt Mỹ">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Dome 3 & 4 · Họa sĩ</div>
-          <div class="artist-name">Việt Mỹ</div>
-          <div class="artist-role">triệu views, một con tim</div>
-        </div>
-      </div>
-
-      <div class="artist-card ao ao-d4">
-        <div class="artist-visual">
-          <img src="assets/images/artist4.jpg" alt="Dzung">
-        </div>
-        <div class="artist-info">
-          <div class="artist-dome">Dome 2 · Biểu diễn</div>
-          <div class="artist-name">Dzung</div>
-          <div class="artist-role">street style đương đại</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="schedule">
-  <div class="container">
-    <span class="sec-eyebrow ao">03 · Lịch trình</span>
-    <h2 class="sec-h ao ao-d1">
-      Chương trình <span class="hand-accent">3 ngày</span>
-    </h2>
-    <div class="sec-rule ao ao-d2"></div>
-    <p class="sec-lead ao ao-d2" style="margin-bottom:44px;">3 – 5 Tháng 4, 2026 · Công viên 23 tháng 9, TP.HCM</p>
-
-    <div class="sched-tabs ao ao-d3">
-      <button class="sched-tab on" data-p="d1">Ngày 3/4 · Khai mạc</button>
-      <button class="sched-tab" data-p="d2">Ngày 4/4</button>
-      <button class="sched-tab" data-p="d3">Ngày 5/4 · Bế mạc</button>
-    </div>
-
-    <div class="sched-pane on" id="pane-d1">
-      <div class="timeline-block">
-        <div class="tb-time">09:00 – 09:50</div>
-        <div class="tb-title">Lễ khai mạc</div>
-        <div class="tb-hand">Mến chào Sài Gòn!</div>
-        <div class="tb-desc">Check in · Phát biểu khai mạc của đại diện Văn Phú · Cắt băng khánh thành triển lãm</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">09:50 – 12:00</div>
-        <div class="tb-title">VIP Session 1 – Tham quan có hướng dẫn</div>
-        <div class="tb-hand">khám phá từng ô cửa</div>
-        <div class="tb-desc">Dome 1–5 cùng HDV · Workshop Terrarium 30 phút · Tea break cocktail · Tối đa 15 khách/ca</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">10:00 – 21:00</div>
-        <div class="tb-title">Mở cửa tự do – Khách GA</div>
-        <div class="tb-hand">tự do như Sài Gòn</div>
-        <div class="tb-desc">Tham quan Dome 1–3 · Trắc nghiệm Standee LED · Mua merchandise cá nhân hóa</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">15:00 – 17:00</div>
-        <div class="tb-title">VIP Session 2 – Homentor Talkshow</div>
-        <div class="tb-hand">câu chuyện mua nhà</div>
-        <div class="tb-desc">Chủ đề "Mua nhà – Chọn nhà" · KOL & Kiến trúc sư nổi tiếng · Experience Lounge Dome 5</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">19:00 – 21:00</div>
-        <div class="tb-title">Đêm nhạc Acoustic – Đêm khai mạc</div>
-        <div class="tb-hand">Sài Gòn không ngủ</div>
-        <div class="tb-desc">Band Paradox · Phan Mạnh Quỳnh · Hoàng Dũng · Vũ Cát Tường biểu diễn tại sân khấu ngoài trời</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">Xuyên suốt ngày</div>
-        <div class="tb-title">Trắc nghiệm Standee LED</div>
-        <div class="tb-hand">"Tổ ấm trong tôi là..."</div>
-        <div class="tb-desc">Khám phá: "Ngôi nhà của tôi như thế nào?" · "Đô thị dành cho tôi là đâu?"</div>
-      </div>
-    </div>
-
-    <div class="sched-pane" id="pane-d2">
-      <div class="timeline-block">
-        <div class="tb-time">09:00 – 21:00</div>
-        <div class="tb-title">Mở cửa tự do toàn bộ Dome</div>
-        <div class="tb-hand">ngày dài của thành phố</div>
-        <div class="tb-desc">Tham quan liên tục · AR & VR Immersive · Tai nghe âm thanh đường phố Sài Gòn</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">09:00 · 11:00 · 15:00 · 17:00</div>
-        <div class="tb-title">4 ca VIP Session</div>
-        <div class="tb-hand">hành trình có hướng dẫn</div>
-        <div class="tb-desc">Mỗi ca tối đa 15 khách · HDV thuyết minh · Street Performance Dome 2 · Workshop Dome 5</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">11:00 & 16:00</div>
-        <div class="tb-title">Homentor Talkshow (2 ca)</div>
-        <div class="tb-hand">chọn nhà bằng cảm xúc</div>
-        <div class="tb-desc">Chủ đề phong cách sống & trang trí nội thất · KOL & Nhà thiết kế · Chỉ dành VIP Session</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">19:00 – 21:00</div>
-        <div class="tb-title">Đêm nhạc Acoustic</div>
-        <div class="tb-hand">ánh đèn lung linh giữa phố</div>
-        <div class="tb-desc">Band Paradox & ca sĩ khách mời biểu diễn liên tục tại sân khấu ngoài trời công viên 23/9</div>
-      </div>
-    </div>
-
-    <div class="sched-pane" id="pane-d3">
-      <div class="timeline-block">
-        <div class="tb-time">09:00 – 21:00</div>
-        <div class="tb-title">Ngày bế mạc – Mở cửa tự do</div>
-        <div class="tb-hand">ngày cuối đáng nhớ</div>
-        <div class="tb-desc">Tham quan tự do · Quà tặng đặc biệt ngày bế mạc · Chụp ảnh lưu niệm tại tất cả Dome</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">09:00 · 11:00 · 15:00 · 17:00</div>
-        <div class="tb-title">4 ca VIP Session cuối</div>
-        <div class="tb-hand">chuyến đi cuối cùng</div>
-        <div class="tb-desc">Workshop Terrarium bế mạc · Homentor Talkshow 2 ca · Nhận quà VIP đặc biệt</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">15:00 – 17:00</div>
-        <div class="tb-title">Homentor Talkshow bế mạc</div>
-        <div class="tb-hand">"trang trí theo tâm hồn"</div>
-        <div class="tb-desc">Chủ đề trang trí nội thất theo phong cách cá nhân · B+ Furniture · Hay Decor · ZERO Furniture</div>
-      </div>
-      <div class="timeline-block">
-        <div class="tb-time">19:00 – 21:00</div>
-        <div class="tb-title">Đêm nhạc bế mạc</div>
-        <div class="tb-hand">cảm ơn Sài Gòn</div>
-        <div class="tb-desc">Đêm nhạc acoustic kết thúc · Giao lưu cùng nghệ sĩ · Khoảnh khắc bế mạc xúc động</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="gifts">
-  <div class="container">
-    <span class="sec-eyebrow ao">04 · Quà tặng & đặc quyền</span>
-    <h2 class="sec-h ao ao-d1">
-      Muôn niềm <span class="hand-accent">vui nhỏ</span>
-    </h2>
-    <div class="sec-rule ao ao-d2"></div>
-    <p class="sec-lead ao ao-d2" style="margin-bottom:0">Sau khi hoàn thành hành trình tham quan, mỗi "cư dân" sẽ nhận được những phần quà ý nghĩa từ Văn Phú.</p>
-
-    <div class="gifts-grid">
-      
-      <div class="gift-card ao ao-d1">
-        <div class="gift-img" style="background-image: url('https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&q=80&w=400');"></div>
-        <div class="gift-body">
-          <div class="gift-tier">Doorgift · Hành trình cảm xúc</div>
-          <div class="gift-name">Nến khắc laser</div>
-          <div class="gift-hand">ánh sáng về Tổ ấm</div>
-          <div class="gift-desc">Nến tealight khắc laser tên sự kiện "Muôn Vị Nhân Sinh" — mang hơi ấm của triển lãm về nhà bạn.</div>
-          <span class="gift-pill">Miễn phí · Tất cả khách</span>
-        </div>
-      </div>
-
-      <div class="gift-card ao ao-d2">
-        <div class="gift-img" style="background-image: url('https://images.unsplash.com/photo-1557142046-c704a3adf364?auto=format&fit=crop&q=80&w=400');"></div>
-        <div class="gift-body">
-          <div class="gift-tier">F&B · Dome 5</div>
-          <div class="gift-name">Đồ uống & bánh</div>
-          <div class="gift-hand">xứng đáng một phần thưởng</div>
-          <div class="gift-desc">Hoàn thành đủ Dome 1–5, nhận thức uống & món bánh miễn phí tại quầy F&B Dome 5.</div>
-          <span class="gift-pill">Khi hoàn thành hành trình</span>
-        </div>
-      </div>
-
-      <div class="gift-card ao ao-d3">
-        <div class="gift-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=400');"></div>
-        <div class="gift-body">
-          <div class="gift-tier">Merchandise · Trạm kỷ niệm</div>
-          <div class="gift-name">Bộ sưu tập "Muôn vị"</div>
-          <div class="gift-hand">mang Sài Gòn về nhà</div>
-          <div class="gift-desc">Tote bag · Bình giữ nhiệt · Áo phông · Ốp điện thoại — khắc/in tên bạn theo yêu cầu tại chỗ.</div>
-          <span class="gift-pill">Tùy chọn mua thêm</span>
-        </div>
-      </div>
-
-      <div class="gift-card ao ao-d1">
-        <div class="gift-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=400');"></div>
-        <div class="gift-body">
-          <div class="gift-tier">Workshop nghệ thuật · Dome 5</div>
-          <div class="gift-name">Workshop Terrarium</div>
-          <div class="gift-hand">khu rừng thu nhỏ của bạn</div>
-          <div class="gift-desc">Tự tay tạo terrarium mang phong cách riêng — tối giản, hiện đại hay tự nhiên. 4 ca/ngày · 30 phút/ca.</div>
-          <span class="gift-pill">Đăng ký tại sự kiện</span>
-        </div>
-      </div>
-
-      <div class="gift-card ao ao-d2">
-        <div class="gift-img" style="background-image: url('https://images.unsplash.com/photo-1635830625698-3b9bd74671ca?auto=format&fit=crop&q=80&w=400');"></div>
-        <div class="gift-body">
-          <div class="gift-tier">Đặc quyền cư dân · Cá nhân hóa</div>
-          <div class="gift-name">Thẻ cư dân "Muôn vị"</div>
-          <div class="gift-hand">in cảnh quê hương của bạn</div>
-          <div class="gift-desc">Thẻ in cảnh đặc trưng quê hương — ký tên và chiếu trực tiếp lên vách triển lãm. Kỷ niệm không thể quên.</div>
-          <span class="gift-pill">Dành cho mọi khách tham dự</span>
-        </div>
-      </div>
-
-      <div class="gift-card ao ao-d3">
-        <div class="gift-img" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=400');"></div>
-        <div class="gift-body">
-          <div class="gift-tier">Experience Lounge · Dome 4</div>
-          <div class="gift-name">Cocktail độc bản</div>
-          <div class="gift-hand">nhâm nhi ước mơ</div>
-          <div class="gift-desc">Cocktail đặc chế từ bartender tại Experience Lounge Dome 4 — thưởng thức dưới vòm trời ước mơ mapping.</div>
-          <span class="gift-pill">Thưởng thức miễn phí</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="youtube">
-  <div class="container">
-    <span class="sec-eyebrow ao">05 · MV & Teaser</span>
-    <h2 class="sec-h ao ao-d1">
-      Cảm nhận trước<br>
-      <span class="hand-accent">hơi thở của triển lãm</span>
-    </h2>
-    <div class="sec-rule ao ao-d2"></div>
-    <p class="sec-lead ao ao-d2" style="margin-bottom:0;">Những thước phim mang ngôn ngữ điện ảnh — hội họa màu nước — chữ viết tay cảm xúc của Văn Phú.</p>
-
-    <div class="yt-frame ao ao-d3">
-      <iframe 
-        src="https://www.youtube.com/embed/CHvGZbg4-qM?autoplay=1&mute=0&controls=1&loop=1&playlist=CHvGZbg4-qM" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="yt-links ao ao-d4">
-      <a class="yt-link" href="https://www.youtube.com/@VanPhuInvest" target="_blank" rel="noopener">▶ Kênh YouTube Văn Phú</a>
-      <a class="yt-link" href="https://www.facebook.com/VanPhuInvest" target="_blank" rel="noopener">◈ Fanpage Văn Phú</a>
-      <a class="yt-link" href="https://vanphu-muonvinhansinh.brandingcompass.ai" target="_blank" rel="noopener">◎ Brand Guideline</a>
-    </div>
-  </div>
-</section>
-
-<section id="register">
-  <div class="container">
-    <div class="text-center ao" style="margin-bottom:56px;">
-      <span class="sec-eyebrow" style="display:block;text-align:center;">06 · Đăng ký tham dự</span>
-      <h2 class="sec-h" style="text-align:center;">
-        Giữ chỗ của bạn<br>
-        <span class="hand-accent" style="font-size:.7em;">tại Muôn Vị Nhân Sinh</span>
-      </h2>
-      <div class="sec-rule" style="margin:22px auto;"></div>
-      <p class="sec-lead" style="text-align:center;margin:0 auto;max-width:520px;">
-        Đăng ký miễn phí — nhận vé QR qua email và trải nghiệm triển lãm đa giác quan tại Công viên 23 tháng 9, TP.HCM.
-      </p>
-    </div>
-
-    <div class="single-counter-box ao ao-d1">
-      <span class="sc-num" data-target="1542">0</span>
-      <span class="sc-text">Người<br>đã đăng ký</span>
-    </div>
-    <div class="reg-wrap ao ao-d2">
-      <div class="form-note-box">
-        <strong>Lưu ý quan trọng:</strong><br>
-        • Mỗi lượt đăng ký dành cho <strong>1 người</strong> tham dự.<br>
-        • Trẻ em <18 tuổi cần có người bảo hộ đăng ký; trẻ nhỏ <1m miễn đăng ký.<br>
-        • Bạn có thể thay đổi ngày tham dự <strong>không cần đăng ký lại</strong>.<br>
-        • Sau khi đăng ký, vui lòng kiểm tra email để nhận vé QR từ BTC.
-      </div>
-
-      <form id="regForm" novalidate>
-        <div class="f-row">
-          <div class="f-group">
-            <label class="f-label" for="fName">Họ và tên <span class="f-req">*</span></label>
-            <input type="text" id="fName" class="f-input" placeholder="Nguyễn Văn A" autocomplete="name" required>
-            <div class="f-err" id="eName">Vui lòng nhập họ tên của bạn.</div>
-          </div>
-          <div class="f-group">
-            <label class="f-label" for="fYear">Năm sinh <span style="color:var(--text-muted);font-size:.9em;">(không bắt buộc)</span></label>
-            <input type="number" id="fYear" class="f-input" placeholder="1990" min="1920" max="2025">
-            <div class="f-err" id="eYear">Năm sinh không hợp lệ (1920–2025).</div>
-          </div>
-        </div>
-
-        <div class="f-group">
-          <label class="f-label" for="fEmail">Email <span class="f-req">*</span></label>
-          <input type="email" id="fEmail" class="f-input" placeholder="example@email.com" autocomplete="email" required>
-          <div class="f-err" id="eEmail">Vui lòng nhập địa chỉ email hợp lệ (ví dụ: ten@email.com).</div>
-        </div>
-
-        <div class="f-group">
-          <label class="f-label" for="fPhone">Số điện thoại <span class="f-req">*</span></label>
-          <input type="tel" id="fPhone" class="f-input" placeholder="0901 234 567" autocomplete="tel" required>
-          <div class="f-err" id="ePhone">Số điện thoại VN không hợp lệ (10 số, bắt đầu 0, đầu số 03x/05x/07x/08x/09x).</div>
-        </div>
-
-        <div class="f-group">
-          <label class="f-label" for="fDate">Ngày tham dự dự kiến <span class="f-req">*</span></label>
-          <select id="fDate" class="f-input" required>
-            <option value="">-- Chọn ngày --</option>
-            <option value="2026-04-03">Thứ sáu, 03/04/2026</option>
-            <option value="2026-04-04">Thứ bảy, 04/04/2026</option>
-            <option value="2026-04-05">Chủ nhật, 05/04/2026</option>
-          </select>
-          <div class="f-err" id="eDate">Vui lòng chọn ngày tham dự.</div>
-        </div>
-
-        <div class="f-check">
-          <input type="checkbox" id="chkEmail" required>
-          <label class="f-check-label" for="chkEmail">
-            Tôi đồng ý nhận thông tin và chương trình ưu đãi từ <strong>Văn Phú</strong> qua email. Thông tin cá nhân được bảo mật theo <a href="#">Chính sách Bảo vệ Dữ liệu</a> của Công ty Cổ phần Đầu tư Văn Phú – Invest (Nghị định 13/2023/NĐ-CP).
-          </label>
-        </div>
-        <div class="f-err" id="eEmail2" style="margin:-12px 0 16px 30px;">Vui lòng đồng ý để nhận email xác nhận từ BTC.</div>
-
-        <div class="f-check">
-          <input type="checkbox" id="chkDisclaim" required>
-          <label class="f-check-label" for="chkDisclaim">
-            Tôi xác nhận thông tin đăng ký chính xác và đồng ý với điều khoản miễn trừ trách nhiệm. Trẻ em dưới 18 tuổi cần có người bảo hộ đi kèm trong suốt thời gian tham dự.
-          </label>
-        </div>
-        <div class="f-err" id="eDisclaim" style="margin:-12px 0 20px 30px;">Vui lòng xác nhận điều khoản miễn trừ trách nhiệm.</div>
-
-        <button type="submit" class="btn-submit">Đăng ký tham dự →</button>
-      </form>
-    </div>
-
-    <div class="map-block ao">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.531776953047!2d106.69225797586548!3d10.770519359302633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3e8297b481%3A0xcda6dc6a0debf661!2sSeptember%2023rd%20Park!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-</section>
-<footer>
-  <div class="container">
-    
-    <div class="footer-top-block ao">
-      <div class="footer-logo-wrap">
-        <img height="40px" src="assets/images/VP_Logo-website-header-2-e1745916306520.png" alt="Văn Phú Invest">
-      </div>
-      <div class="footer-intro">
-        Thành lập từ năm 2003, Công ty Cổ phần Phát triển Bất động sản <strong>Văn Phú</strong> không chỉ là nhà đầu tư mà còn thể hiện vai trò trong toàn bộ quá trình thực hiện dự án bất động sản: từ khâu nghiên cứu, phát triển, thiết kế, quản lý xây dựng thi công, vận hành và khai thác sau đầu tư. Doanh nghiệp nhanh chóng trở thành một trong những đối tác đáng tin cậy và uy tín trong ngành xây dựng cũng như phát triển dự án. Với nỗ lực Chuyên tâm tạo giá trị sống cùng tầm nhìn tương lai, <strong>Văn Phú</strong> từng bước khẳng định vị thế trong lĩnh vực bất động sản tại Việt Nam.
-      </div>
-    </div>
-
-    <hr class="ao ao-d1">
-
-    <div class="row g-4 footer-cols ao ao-d2">
-      
-      <div class="col-lg-4 col-md-6">
-        <h3 class="footer-col-title">Liên hệ</h3>
-        <div class="footer-info">
-          Địa chỉ: Số 104 phố Thái Thịnh, phường Trung Liệt, Đống Đa, TP Hà Nội, Việt Nam<br>
-          <span>Hotline: (+84) 24 6258 3535</span><br>
-          <span>Fax: (+84) 24 6258 3636</span><br>
-          Email: info@vanphu.vn
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <h3 class="footer-col-title">Khám phá</h3>
-        <ul class="footer-links">
-          <li><a href="#">Thông tin Văn Phú</a></li>
-          <li><a href="#">Dự án</a></li>
-          <li><a href="#">Quan hệ cổ đông</a></li>
-          <li><a href="#">Phát triển bền vững</a></li>
-          <li><a href="#">Tin tức</a></li>
-          <li><a href="#">Liên hệ</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-4 col-md-12">
-        <h3 class="footer-col-title">Kết nối với chúng tôi</h3>
-        <ul class="footer-links">
-          <li>
-            <a href="#" class="footer-social-link">
-              <i class="fa-brands fa-facebook-f"></i>
-              Facebook
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-social-link">
-              <i class="fa-brands fa-linkedin-in"></i>
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-social-link">
-              <i class="fa-brands fa-youtube"></i>
-              Youtube
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="footer-note ao ao-d3">
-      Công ty chỉ xử lý dữ liệu bạn cung cấp để liên hệ tư vấn sản phẩm, dịch vụ của Công ty. Vui lòng xem <a href="#">Quy định bảo vệ dữ liệu cá nhân khách hàng, đối tác (gọi chung là “Quy định”)</a>.
-    </p>
-
-    <div class="footer-bottom ao ao-d4">
-      <div class="footer-copy">© Copyright 2026 bởi Văn Phú – Invest. Bảo lưu mọi quyền.</div>
-      <div class="footer-hand">Muôn vị nhân sinh · Sài Gòn · Tháng 4.2026</div>
-    </div>
-  </div>
-</footer>
-
-<div class="modal-bg" id="successModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <span class="modal-icon">✉️</span>
-    <div class="modal-title">Đăng ký thành công!</div>
-    <div class="modal-hand">chào mừng bạn đến với Muôn vị nhân sinh</div>
-    <p class="modal-desc">Vui lòng kiểm tra lại thông tin đã đăng ký bên dưới và kiểm tra email để nhận vé QR từ Ban Tổ Chức.</p>
-    <div class="modal-summary" id="modalSummary"></div>
-    <p class="modal-note">Không thấy email? Kiểm tra thư mục <strong>Spam</strong> hoặc liên hệ <a href="mailto:info@vanphu.vn">info@vanphu.vn</a></p>
-    <button class="modal-btn" onclick="closeModal()">Đóng</button>
-  </div>
-</div>
-
-<script>
-
-  const scObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counter = entry.target.querySelector('.sc-num');
-      if (counter) {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
-        const speed = 80; // Tốc độ đếm (số nhỏ = đếm nhanh)
-        const inc = target / speed;
-
-        const updateCount = () => {
-          if (count < target) {
-            count += inc;
-            counter.innerText = Math.ceil(count);
-            setTimeout(updateCount, 20);
-          } else {
-            counter.innerText = target; // Đảm bảo dừng đúng số
-          }
-        };
-        updateCount();
-      }
-      observer.unobserve(entry.target); // Ngừng theo dõi sau khi đếm xong
-    }
-  });
-}, { threshold: 0.5 });
-
-const scBox = document.querySelector('.single-counter-box');
-if (scBox) scObserver.observe(scBox);
-// ======== NAV ========
-const nav = document.getElementById('siteNav');
-const burger = document.getElementById('navBurger');
-const menu = document.getElementById('navMenu');
-window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 60));
-burger.addEventListener('click', () => menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-
-// ======== SMOOTH SCROLL ========
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (!t) return;
-    e.preventDefault();
-    window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 80, behavior: 'smooth' });
-  });
-});
-
-// ======== INTERSECTION OBSERVER ========
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.ao').forEach(el => io.observe(el));
-
-// Timeline blocks in schedule
-const tio = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.timeline-block').forEach((b, i) => {
-        setTimeout(() => b.classList.add('vis'), i * 100);
-      });
-    }
-  });
-}, { threshold: 0.05 });
-document.querySelectorAll('.sched-pane').forEach(p => tio.observe(p));
-
-// ======== SCHEDULE TABS ========
-document.querySelectorAll('.sched-tab').forEach(tab => {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.sched-tab').forEach(t => t.classList.remove('on'));
-    document.querySelectorAll('.sched-pane').forEach(p => p.classList.remove('on'));
-    this.classList.add('on');
-    const pane = document.getElementById('pane-' + this.dataset.p);
-    pane.classList.add('on');
-    setTimeout(() => {
-      pane.querySelectorAll('.timeline-block').forEach((b, i) => {
-        setTimeout(() => b.classList.add('vis'), i * 100);
-      });
-    }, 50);
-  });
-});
-setTimeout(() => {
-  document.querySelectorAll('#pane-d1 .timeline-block').forEach((b, i) => {
-    setTimeout(() => b.classList.add('vis'), i * 100 + 400);
-  });
-}, 300);
-
-// ======== YOUTUBE ========
-
-
-// ======== FORM VALIDATION ========
-function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.toLowerCase().trim()); }
-function isPhone(v) { return /^0[3-9]\d{8}$/.test(v.replace(/[\s\-\.]/g, '')); }
-function setErr(id, show) { document.getElementById(id).classList.toggle('show', show); }
-
-document.getElementById('fEmail').addEventListener('blur', function() {
-  if (this.value) setErr('eEmail', !isEmail(this.value));
-});
-document.getElementById('fPhone').addEventListener('blur', function() {
-  if (this.value) setErr('ePhone', !isPhone(this.value));
-});
-
-document.getElementById('regForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name   = document.getElementById('fName').value.trim();
-  const email  = document.getElementById('fEmail').value.trim();
-  const phone  = document.getElementById('fPhone').value.trim();
-  const date   = document.getElementById('fDate').value;
-  const year   = document.getElementById('fYear').value;
-  const chkE   = document.getElementById('chkEmail').checked;
-  const chkD   = document.getElementById('chkDisclaim').checked;
-  let ok = true;
-
-  if (!name || name.length < 2)       { setErr('eName', true);     ok = false; } else setErr('eName', false);
-  if (!isEmail(email))                 { setErr('eEmail', true);    ok = false; } else setErr('eEmail', false);
-  if (!isPhone(phone))                 { setErr('ePhone', true);    ok = false; } else setErr('ePhone', false);
-  if (!date)                           { setErr('eDate', true);     ok = false; } else setErr('eDate', false);
-  if (year && (year < 1920 || year > 2025)) { setErr('eYear', true); ok = false; } else setErr('eYear', false);
-  if (!chkE)                           { setErr('eEmail2', true);   ok = false; } else setErr('eEmail2', false);
-  if (!chkD)                           { setErr('eDisclaim', true); ok = false; } else setErr('eDisclaim', false);
-
-  if (!ok) return;
-
-  const dateMap = { '2026-04-03': 'Thứ Sáu, 03/04/2026', '2026-04-04': 'Thứ Bảy, 04/04/2026', '2026-04-05': 'Chủ Nhật, 05/04/2026' };
-  document.getElementById('modalSummary').innerHTML =
-    `<strong>Họ tên:</strong> ${name}<br>` +
-    `<strong>Email:</strong> ${email}<br>` +
-    `<strong>Điện thoại:</strong> ${phone}<br>` +
-    `<strong>Ngày tham dự:</strong> ${dateMap[date]}` +
-    (year ? `<br><strong>Năm sinh:</strong> ${year}` : '');
-
-  document.getElementById('successModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  this.reset();
-});
-
-function closeModal() {
-  document.getElementById('successModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('successModal').addEventListener('click', e => { if (e.target.id === 'successModal') closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>
