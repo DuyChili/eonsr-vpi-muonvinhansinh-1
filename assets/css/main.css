@@ -940,6 +940,22 @@
  }
 
  @media (max-width: 767px) {
+    .art-outer,
+    .art-section,
+    .art-left,
+    .art-top {
+        overflow: visible !important;
+    }
+
+    .art-title-big {
+        font-size: 72px;
+        line-height: 1.5 !important;
+        padding: 8px 8px 8px 12px !important;
+        overflow: visible !important;
+        display: block;
+    }
+}
+ @media (max-width: 767px) {
      .art-title-big {
          overflow: visible;
          /* ✅ đảm bảo không bị ẩn */
