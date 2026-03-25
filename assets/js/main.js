@@ -57,13 +57,27 @@ var artSwiper = new Swiper(".artSwiper", {
     freeMode: true,
 });
 const artistCards = document.querySelectorAll('.artist-card');
+
 artistCards.forEach(card => {
+    // 1. Logic bật class active của bạn (Giữ nguyên 100%)
     card.addEventListener('mouseenter', () => {
         artistCards.forEach(c => c.classList.remove('active'));
         card.classList.add('active');
     });
-});
 
+    // 2. Thêm phần này: Chỉ scroll khi click/tap trên màn hình nhỏ
+    card.addEventListener('click', function() {
+        if (window.innerWidth <= 991) { // Dựa theo breakpoint mobile/tablet trong CSS của bạn
+            setTimeout(() => {
+                this.scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center',
+                    block: 'nearest'
+                });
+            }, 250); // Delay 1 chút cho thẻ kịp nở ra (CSS đang set 0.5s) rồi mới tính toán cuộn
+        }
+    });
+});
 
 // ==========================================
 // MODAL SYSTEM
