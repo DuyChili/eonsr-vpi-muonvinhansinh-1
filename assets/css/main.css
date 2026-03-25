@@ -963,6 +963,8 @@
     .art-title-small {
         padding-left: 20px; /* Nới rộng khung sang trái cho nét móc chữ 'g' */
         margin-left: -20px; /* Kéo chữ về lại đúng vị trí layout */
+        padding-bottom: 60px; /* Nới rộng khung sang trái cho nét móc chữ 'g' */
+        margin-bottom: -60px;
         padding-top: 12px;         
         -webkit-transform: translateZ(0); 
     }
