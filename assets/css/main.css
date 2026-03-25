@@ -771,7 +771,7 @@
      }
 
      .date-options {
-         flex-direction: column;
+         /* flex-direction: column; */
      }
  }
 
