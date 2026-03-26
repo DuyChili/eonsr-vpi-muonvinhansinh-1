@@ -1168,9 +1168,10 @@
      text-shadow: 0px 0px 14px rgba(255, 255, 255, 1);
      text-align: center;
      /* luôn hiện */
-     max-height: 120px;
+     max-height: 1200px;
      opacity: 1;
      transition: none;
+     
  }
 
  .artist-card.active .artist-card-name{
@@ -1193,11 +1194,15 @@
      word-break: break-word;
      white-space: normal;
  }
+  .artist-card-desc a{
+    color: white;
+  }
 
  /* Khi active: hiện cả name lẫn desc */
  .artist-card.active .artist-card-name {
-     max-height: 120px;
+     max-height: 1200px;
      opacity: 1;
+     text-align: start;
  }
 
  .artist-card.active .artist-card-desc {
