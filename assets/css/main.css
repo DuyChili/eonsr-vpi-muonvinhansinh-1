@@ -1464,6 +1464,7 @@
 
  /* MODAL SUCCESS */
  .modal-overlay {
+     display: none;
      position: fixed;
      inset: 0;
      background: rgba(0, 0, 0, 0.6);
@@ -1478,6 +1479,7 @@
  }
 
  .modal-overlay.active {
+     display: flex;
      opacity: 1;
      visibility: visible;
  }
@@ -1610,6 +1612,32 @@
      opacity: 0.9;
  }
 
+.modal-btn-outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: #BB581A;
+    border: 2px solid #BB581A;
+    text-decoration: none; /* Bỏ gạch chân của thẻ a */
+    margin-top: 8px; /* Khoảng cách với nút phía trên */
+    transition: all 0.3s ease;
+}
+
+.modal-btn-outline:hover {
+    background: #BB581A;
+    color: #ffffff;
+}
+
+.modal-btn-outline svg {
+    transition: transform 0.3s ease;
+}
+
+.modal-btn-outline:hover svg {
+    transform: translate(2px, -2px);
+}
+
  .modal-note {
      color: #aaa;
      font-size: 12px;
@@ -1694,6 +1722,7 @@
  }
 
  .otp-resend {
+     display: none;
      background: none;
      border: none;
      color: var(--primary-orange);
@@ -1711,6 +1740,7 @@
  }
 
  .otp-error-msg {
+     display: none;
      color: #e53935;
      font-size: 12px;
      font-family: var(--font-svn);
