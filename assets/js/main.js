@@ -1,8 +1,11 @@
 AOS.init({
-    duration: 800,
-    easing: 'ease-out-cubic',
+    duration: 600,           // giảm từ 800 → 600
+    easing: 'ease-out-quad', // nhẹ hơn ease-out-cubic
     once: true,
-    offset: 80,
+    offset: 60,
+    disable: function () {   // tắt AOS trên mobile yếu
+        return window.innerWidth < 480;
+    }
 });
 var theaterSwiper = new Swiper(".theaterSwiper", {
     slidesPerView: "auto",
@@ -11,6 +14,8 @@ var theaterSwiper = new Swiper(".theaterSwiper", {
     loopAdditionalSlides: 3,
     grabCursor: true,
     spaceBetween: 16,
+    autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+    speed: 700,
 });
 
 var pmqSwiper = new Swiper(".pmqSwiper", {
@@ -24,7 +29,7 @@ var pmqSwiper = new Swiper(".pmqSwiper", {
         },
     },
     grabCursor: true,
-    preventClicks: true,          // ✅ cho phép click
+    preventClicks: true,         
     preventClicksPropagation: true,
     breakpoints: {
         320: { slidesPerView: 1.33, spaceBetween: 16 },
@@ -59,26 +64,34 @@ var artSwiper = new Swiper(".artSwiper", {
 const artistCards = document.querySelectorAll('.artist-card');
 
 artistCards.forEach(card => {
-    // 1. Logic bật class active của bạn (Giữ nguyên 100%)
+    // Desktop: hover để mở
     card.addEventListener('mouseenter', () => {
-        artistCards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
+        if (window.innerWidth > 991) {
+            artistCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+        }
     });
 
-    // 2. Thêm phần này: Chỉ scroll khi click/tap trên màn hình nhỏ
-    card.addEventListener('click', function() {
-        if (window.innerWidth <= 991) { // Dựa theo breakpoint mobile/tablet trong CSS của bạn
+    // Mobile/tablet: click để mở + scroll vào giữa
+    card.addEventListener('click', function () {
+        if (window.innerWidth <= 991) {
+            const isAlreadyActive = this.classList.contains('active');
+            artistCards.forEach(c => c.classList.remove('active'));
+            
+            if (!isAlreadyActive) {
+                this.classList.add('active');
+            }
+
             setTimeout(() => {
                 this.scrollIntoView({
                     behavior: 'smooth',
                     inline: 'center',
                     block: 'nearest'
                 });
-            }, 250); // Delay 1 chút cho thẻ kịp nở ra (CSS đang set 0.5s) rồi mới tính toán cuộn
+            }, 250);
         }
     });
 });
-
 // ==========================================
 // MODAL SYSTEM
 // ==========================================
@@ -261,3 +274,100 @@ document.addEventListener('keydown', function (e) {
         closeModal(successModal);
     }
 });
+
+// ==========================================
+// COUNTER ANIMATION — count up khi scroll vào
+// ==========================================
+(function () {
+    const counterEl = document.querySelector('.register-counter .num-wrapper span');
+    if (!counterEl) return;
+
+    const target = parseInt(counterEl.textContent.replace(/\D/g, ''), 10);
+
+    function animateCount(el, to, duration) {
+        let start = 0;
+        const startTime = performance.now();
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // easeOutExpo
+            const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            const current = Math.floor(eased * to);
+            el.textContent = current.toLocaleString('vi-VN');
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            animateCount(counterEl, target, 2000);
+            obs.disconnect();
+        }
+    }, { threshold: 0.5 });
+
+    obs.observe(counterEl);
+})();
+
+// ==========================================
+// THEATER SWIPER — thêm autoplay
+// ==========================================
+// Hủy swiper cũ nếu cần rồi khởi tạo lại
+if (typeof theaterSwiper !== 'undefined' && theaterSwiper.autoplay) {
+    // đã có autoplay, bỏ qua
+} else {
+    // Nếu muốn autoplay, thêm vào config theaterSwiper trong phần khai báo cũ:
+    // autoplay: { delay: 3000, disableOnInteraction: false }
+}
+
+// ==========================================
+// PMQ CARD — hover image zoom (đã có CSS, JS không cần thêm)
+// ==========================================
+
+// ==========================================
+// SUBMIT BUTTON — ripple effect khi click
+// ==========================================
+document.querySelector('.submit-btn')?.addEventListener('click', function (e) {
+    const btn   = this;
+    const circle = document.createElement('span');
+    const d      = Math.max(btn.clientWidth, btn.clientHeight);
+    const rect   = btn.getBoundingClientRect();
+
+    circle.style.cssText = `
+        position: absolute;
+        width: ${d}px; height: ${d}px;
+        top: ${e.clientY - rect.top - d / 2}px;
+        left: ${e.clientX - rect.left - d / 2}px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+    `;
+
+    // Thêm keyframe nếu chưa có
+    if (!document.getElementById('ripple-style')) {
+        const s = document.createElement('style');
+        s.id = 'ripple-style';
+        s.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
+        document.head.appendChild(s);
+    }
+
+    btn.style.position = 'relative';
+    btn.style.overflow = 'hidden';
+    btn.appendChild(circle);
+    setTimeout(() => circle.remove(), 600);
+});
+
+// ==========================================
+// THEATER SWIPER — update để có autoplay mượt
+// ==========================================
+// Tìm và cấu hình lại theaterSwiper (thêm autoplay)
+setTimeout(() => {
+    if (typeof Swiper !== 'undefined') {
+        // Chỉ cần bạn thêm autoplay vào config theaterSwiper ở trên là đủ
+        // Dòng dưới đây chỉ để tham khảo cách reinit nếu cần:
+        theaterSwiper.params.autoplay = { delay: 3000 };
+        theaterSwiper.autoplay.start();
+    }
+}, 100);
