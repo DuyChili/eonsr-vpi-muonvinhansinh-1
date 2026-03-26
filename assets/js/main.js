@@ -1,9 +1,9 @@
 AOS.init({
-    duration: 600,           // giảm từ 800 → 600
-    easing: 'ease-out-quad', // nhẹ hơn ease-out-cubic
+    duration: 600,           
+    easing: 'ease-out-quad', 
     once: true,
     offset: 60,
-    disable: function () {   // tắt AOS trên mobile yếu
+    disable: function () {  
         return window.innerWidth < 480;
     }
 });
@@ -29,7 +29,7 @@ var pmqSwiper = new Swiper(".pmqSwiper", {
         },
     },
     grabCursor: true,
-    preventClicks: true,         
+    preventClicks: true,          // ✅ cho phép click
     preventClicksPropagation: true,
     breakpoints: {
         320: { slidesPerView: 1.33, spaceBetween: 16 },
@@ -308,66 +308,3 @@ document.addEventListener('keydown', function (e) {
 
     obs.observe(counterEl);
 })();
-
-// ==========================================
-// THEATER SWIPER — thêm autoplay
-// ==========================================
-// Hủy swiper cũ nếu cần rồi khởi tạo lại
-if (typeof theaterSwiper !== 'undefined' && theaterSwiper.autoplay) {
-    // đã có autoplay, bỏ qua
-} else {
-    // Nếu muốn autoplay, thêm vào config theaterSwiper trong phần khai báo cũ:
-    // autoplay: { delay: 3000, disableOnInteraction: false }
-}
-
-// ==========================================
-// PMQ CARD — hover image zoom (đã có CSS, JS không cần thêm)
-// ==========================================
-
-// ==========================================
-// SUBMIT BUTTON — ripple effect khi click
-// ==========================================
-document.querySelector('.submit-btn')?.addEventListener('click', function (e) {
-    const btn   = this;
-    const circle = document.createElement('span');
-    const d      = Math.max(btn.clientWidth, btn.clientHeight);
-    const rect   = btn.getBoundingClientRect();
-
-    circle.style.cssText = `
-        position: absolute;
-        width: ${d}px; height: ${d}px;
-        top: ${e.clientY - rect.top - d / 2}px;
-        left: ${e.clientX - rect.left - d / 2}px;
-        background: rgba(255,255,255,0.3);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple 0.6s linear;
-        pointer-events: none;
-    `;
-
-    // Thêm keyframe nếu chưa có
-    if (!document.getElementById('ripple-style')) {
-        const s = document.createElement('style');
-        s.id = 'ripple-style';
-        s.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
-        document.head.appendChild(s);
-    }
-
-    btn.style.position = 'relative';
-    btn.style.overflow = 'hidden';
-    btn.appendChild(circle);
-    setTimeout(() => circle.remove(), 600);
-});
-
-// ==========================================
-// THEATER SWIPER — update để có autoplay mượt
-// ==========================================
-// Tìm và cấu hình lại theaterSwiper (thêm autoplay)
-setTimeout(() => {
-    if (typeof Swiper !== 'undefined') {
-        // Chỉ cần bạn thêm autoplay vào config theaterSwiper ở trên là đủ
-        // Dòng dưới đây chỉ để tham khảo cách reinit nếu cần:
-        theaterSwiper.params.autoplay = { delay: 3000 };
-        theaterSwiper.autoplay.start();
-    }
-}, 100);
