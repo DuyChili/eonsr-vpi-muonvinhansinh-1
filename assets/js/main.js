@@ -154,6 +154,7 @@ let otpCountdownInterval = null;
 let currentEmail = '';
 let currentFullName = '';
 let currentSelectedDate = '';
+let currentPhone = '';
 
 // OTP inputs — navigate, paste
 otpInputs.forEach((input, index) => {
@@ -239,20 +240,7 @@ registerForm.addEventListener('submit', async function (e) {
     submitBtn.innerHTML = 'Đang xử lý…';
 
     try {
-        // Bước 1: Tạo khách
-        const createRes = await apiPost('/guests', {
-            full_name: fullName,
-            email: email,
-            phone: phone,
-            event_date: selectedDate,
-            guest_type: 'Khách Đăng Ký',
-        });
-
-        if (!createRes.ok && createRes.status !== 422) {
-            throw new Error(createRes.data?.message || 'Đăng ký thất bại. Vui lòng thử lại.');
-        }
-
-        // Bước 2: Gửi OTP
+        // CHỈ GỬI OTP - Không gọi API /guests ở đây để tránh gửi mail thành công sớm
         const otpRes = await apiPost('/guest/send-otp', {
             full_name: fullName,
             email: email,
@@ -266,10 +254,12 @@ registerForm.addEventListener('submit', async function (e) {
             throw new Error(otpRes.data?.message || 'Không thể gửi OTP. Vui lòng thử lại.');
         }
 
-        // Lưu state, mở OTP modal
+        // Lưu thông tin vào bộ nhớ tạm để dùng sau khi xác thực OTP xong
         currentEmail = email;
         currentFullName = fullName;
+        currentPhone = phone; // Lưu thêm số điện thoại
         currentSelectedDate = selectedDate;
+
         openOtpModal(email);
 
     } catch (err) {
@@ -297,24 +287,38 @@ otpConfirmBtn.addEventListener('click', async function () {
     this.textContent = 'Đang xác nhận…';
 
     try {
-        const res = await apiPost('/guest/verify-otp', {
+        // 1. Xác thực OTP trước
+        const verifyRes = await apiPost('/guest/verify-otp', {
             email: currentEmail,
             otp: entered,
         });
 
-        if (!res.ok) {
-            otpErrorMsg.textContent = res.data?.message || 'Mã OTP không đúng. Vui lòng thử lại.';
+        if (!verifyRes.ok) {
+            otpErrorMsg.textContent = verifyRes.data?.message || 'Mã OTP không đúng. Vui lòng thử lại.';
             otpInputs.forEach(i => i.classList.add('error'));
             setTimeout(() => otpInputs.forEach(i => i.classList.remove('error')), 600);
             return;
         }
 
-        // Thành công
+        // 2. Nếu OTP ĐÚNG -> Bây giờ mới gọi API tạo khách (Lúc này mail thành công mới gửi đi)
+        const createRes = await apiPost('/guests', {
+            full_name: currentFullName,
+            email: currentEmail,
+            phone: currentPhone,
+            event_date: currentSelectedDate,
+            guest_type: 'Khách Đăng Ký',
+        });
+
+        if (!createRes.ok) {
+            throw new Error(createRes.data?.message || 'Xác thực thành công nhưng không thể ghi nhận thông tin khách.');
+        }
+
+        // 3. Hoàn tất quy trình
         clearInterval(otpCountdownInterval);
         closeModal(otpModal);
         document.getElementById('modalDate').textContent = DATE_LABEL_MAP[currentSelectedDate] || currentSelectedDate;
 
-        // Reset form về trạng thái ban đầu
+        // Reset form
         registerForm.reset();
         dateBtns.forEach(b => b.classList.remove('active'));
         dateBtns[0].classList.add('active');
@@ -322,8 +326,8 @@ otpConfirmBtn.addEventListener('click', async function () {
 
         setTimeout(() => openModal(successModal), 300);
 
-    } catch {
-        otpErrorMsg.textContent = 'Lỗi kết nối. Vui lòng thử lại.';
+    } catch (err) {
+        otpErrorMsg.textContent = err.message || 'Lỗi hệ thống. Vui lòng thử lại.';
     } finally {
         this.disabled = false;
         this.textContent = originalText;
