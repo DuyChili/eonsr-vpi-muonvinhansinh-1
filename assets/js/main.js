@@ -308,3 +308,49 @@ document.addEventListener('keydown', function (e) {
 
     obs.observe(counterEl);
 })();
+
+(function () {
+  const fab       = document.getElementById('fabCTA');
+  const fabBtn    = document.getElementById('fabBtn');
+  const registerSection = document.querySelector('.register-section');
+ 
+  if (!fab || !fabBtn || !registerSection) return;
+ 
+  const showAfter = window.innerHeight * 0.6;
+ 
+  function updateFab() {
+    const scrollY      = window.scrollY;
+    const docHeight    = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+ 
+    // Ẩn FAB khi người dùng đã scroll đến khu vực form đăng ký
+    const registerTop  = registerSection.getBoundingClientRect().top + scrollY;
+    const nearRegister = scrollY + windowHeight > registerTop + 100;
+ 
+    if (scrollY > showAfter && !nearRegister) {
+      fab.classList.add('visible');
+    } else {
+      fab.classList.remove('visible');
+    }
+  }
+ 
+  window.addEventListener('scroll', updateFab, { passive: true });
+  updateFab();
+ 
+  // Click: scroll xuống form
+  fabBtn.addEventListener('click', function () {
+    registerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function () {
+      const firstInput = registerSection.querySelector('input');
+      if (firstInput) firstInput.focus();
+    }, 700);
+  });
+ 
+  // Tự động hiện tooltip lần đầu sau 3 giây (desktop only)
+  setTimeout(function () {
+    if (fab.classList.contains('visible') && window.innerWidth > 767) {
+      fab.classList.add('tooltip-visible');
+      setTimeout(function () { fab.classList.remove('tooltip-visible'); }, 2500);
+    }
+  }, 3000);
+})();
