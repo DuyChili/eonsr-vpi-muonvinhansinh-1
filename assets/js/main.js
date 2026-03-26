@@ -196,7 +196,7 @@ function resetOTPInputs() {
 }
 
 function startOTPTimer() {
-    let seconds = 60;
+    let seconds = 300;
     document.getElementById('otpCountdown').textContent = seconds;
     otpTimerWrapper.style.display = 'block';
     otpResend.classList.remove('visible');
