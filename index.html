@@ -547,7 +547,7 @@
       <div class="otp-error-msg" id="otpErrorMsg"></div>
 
       <div class="otp-timer" id="otpTimerWrapper">
-        Mã hết hạn sau <span id="otpCountdown">60</span>s
+        Mã hết hạn sau <span id="otpCountdown">300</span>s
       </div>
       <button class="otp-resend" id="otpResend">Gửi lại mã</button>
 
@@ -557,47 +557,57 @@
     </div>
   </div>
   <!-- modal -->
-  <div class="modal-overlay" id="successModal">
-    <div class="modal-box">
-      <button class="modal-close" id="modalClose">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </button>
+<!-- modal success -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
 
-      <div class="modal-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="10" fill="#BB581A" opacity="0.15" />
-          <path d="M7 12.5L10.5 16L17 9" stroke="#BB581A" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </div>
-
-      <div class="modal-tag">Đăng ký thành công</div>
-
-      <h2 class="modal-title">Hẹn gặp bạn tại<br />Không Gian Nghệ Thuật!</h2>
-
-      <p class="modal-desc">
-        Cảm ơn bạn đã đăng ký tham dự.<br />
-        Vé QR đã được gửi đến email của bạn.
-      </p>
-
-      <div class="modal-info-box">
-        <div class="modal-info-row">
-          <span class="label">Địa điểm</span>
-          <span class="value">Công viên 23 Tháng 9, TP.HCM</span>
-        </div>
-        <div class="modal-info-row">
-          <span class="label">Ngày tham dự</span>
-          <span class="value" id="modalDate">—</span>
-        </div>
-      </div>
-
-      <button class="modal-btn" id="modalCloseBtn">Đã hiểu, hẹn gặp lại!</button>
-
-      <p class="modal-note">Vui lòng kiểm tra hộp thư (kể cả Spam)<br />để nhận vé QR từ Ban tổ chức.</p>
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" fill="#BB581A" opacity="0.15" />
+        <path d="M7 12.5L10.5 16L17 9" stroke="#BB581A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
     </div>
+
+    <div class="modal-tag">Đăng ký thành công</div>
+    <h2 class="modal-title">Hẹn gặp bạn tại<br />Không Gian Nghệ Thuật!</h2>
+
+    <p class="modal-desc">
+      Cảm ơn bạn đã đăng ký tham dự.<br />
+      Vé QR đã được gửi đến email của bạn.
+    </p>
+
+    <div class="modal-info-box">
+      <div class="modal-info-row">
+        <span class="label">Địa điểm</span>
+        <span class="value">Công viên bờ sông Thủ Thiêm, TP.HCM</span>
+      </div>
+      <div class="modal-info-row">
+        <span class="label">Ngày tham dự</span>
+        <span class="value" id="modalDate">—</span>
+      </div>
+    </div>
+
+    <!-- NÚT 1: CHỈ ĐÓNG MODAL -->
+    <button class="modal-btn" id="modalCloseBtn">Đã hiểu, hẹn gặp lại!</button>
+
+    <!-- NÚT 2: CHUYỂN TRANG (NẰM DƯỚI) -->
+    <a href="https://livingconnection.vanphu.vn/" target="_blank" class="modal-btn modal-btn-outline">
+      Khám phá Living Connection
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <polyline points="15 3 21 3 21 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a>
+
+    <p class="modal-note">Vui lòng kiểm tra hộp thư (kể cả Spam)<br />để nhận vé QR từ Ban tổ chức.</p>
   </div>
+</div>
 
 
   <div class="fab-wrapper" id="fabCTA">

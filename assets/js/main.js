@@ -1,12 +1,37 @@
+// ============================================================
+// CONFIG API
+// ============================================================
+const API_BASE = 'https://event-vanphu.eonsr.com/api';
+const BASIC_AUTH = 'Basic ' + btoa('vanphu_api:VanPhu@2026!'); // ← đổi username:password thực
+
+function apiPost(endpoint, body) {
+    return fetch(API_BASE + endpoint, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': BASIC_AUTH,
+        },
+        body: JSON.stringify(body),
+    }).then(async (res) => {
+        const data = await res.json();
+        return { ok: res.ok, status: res.status, data };
+    });
+}
+
+// ============================================================
+// AOS + SWIPER INIT
+// ============================================================
 AOS.init({
-    duration: 600,           
-    easing: 'ease-out-quad', 
+    duration: 600,
+    easing: 'ease-out-quad',
     once: true,
     offset: 60,
-    disable: function () {  
+    disable: function () {
         return window.innerWidth < 480;
     }
 });
+
 var theaterSwiper = new Swiper(".theaterSwiper", {
     slidesPerView: "auto",
     centeredSlides: true,
@@ -29,7 +54,7 @@ var pmqSwiper = new Swiper(".pmqSwiper", {
         },
     },
     grabCursor: true,
-    preventClicks: true,          // ✅ cho phép click
+    preventClicks: true,
     preventClicksPropagation: true,
     breakpoints: {
         320: { slidesPerView: 1.33, spaceBetween: 16 },
@@ -39,65 +64,85 @@ var pmqSwiper = new Swiper(".pmqSwiper", {
     }
 });
 
-const header = document.querySelector('.site-header');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-const dateBtns = document.querySelectorAll('.date-btn');
-dateBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        dateBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    });
-});
 var artSwiper = new Swiper(".artSwiper", {
     slidesPerView: "auto",
     spaceBetween: 18,
     grabCursor: true,
     freeMode: true,
 });
-const artistCards = document.querySelectorAll('.artist-card');
 
+// ============================================================
+// HEADER SCROLL
+// ============================================================
+const header = document.querySelector('.site-header');
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ============================================================
+// DATE BUTTONS
+// ============================================================
+const DATE_MAP = {
+    '17/4 Thứ Sáu': '2026-04-17',
+    '18/4 Thứ Bảy': '2026-04-18',
+    '19/4 Chủ Nhật': '2026-04-19',
+};
+const DATE_LABEL_MAP = {
+    '2026-04-17': 'Thứ Sáu, 17/04/2026',
+    '2026-04-18': 'Thứ Bảy, 18/04/2026',
+    '2026-04-19': 'Chủ Nhật, 19/04/2026',
+};
+let selectedDate = '2026-04-17';
+
+const dateBtns = document.querySelectorAll('.date-btn');
+dateBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        dateBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedDate = DATE_MAP[btn.textContent.trim()] || '2026-04-17';
+    });
+});
+
+// ============================================================
+// ARTIST CARDS
+// ============================================================
+const artistCards = document.querySelectorAll('.artist-card');
 artistCards.forEach(card => {
-    // Desktop: hover để mở
     card.addEventListener('mouseenter', () => {
         if (window.innerWidth > 991) {
             artistCards.forEach(c => c.classList.remove('active'));
             card.classList.add('active');
         }
     });
-
-    // Mobile/tablet: click để mở + scroll vào giữa
     card.addEventListener('click', function () {
         if (window.innerWidth <= 991) {
             const isAlreadyActive = this.classList.contains('active');
             artistCards.forEach(c => c.classList.remove('active'));
-            
-            if (!isAlreadyActive) {
-                this.classList.add('active');
-            }
-
+            if (!isAlreadyActive) this.classList.add('active');
             setTimeout(() => {
-                this.scrollIntoView({
-                    behavior: 'smooth',
-                    inline: 'center',
-                    block: 'nearest'
-                });
+                this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             }, 250);
         }
     });
 });
-// ==========================================
-// MODAL SYSTEM
-// ==========================================
+
+// ============================================================
+// MODAL HELPERS
+// ============================================================
+function openModal(modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal(modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ============================================================
+// OTP MODAL — elements & state
+// ============================================================
 const successModal = document.getElementById('successModal');
 const otpModal = document.getElementById('otpModal');
-const modalDate = document.getElementById('modalDate');
 const otpEmailDisplay = document.getElementById('otpEmailDisplay');
 const otpInputs = document.querySelectorAll('.otp-input');
 const otpErrorMsg = document.getElementById('otpErrorMsg');
@@ -106,25 +151,50 @@ const otpResend = document.getElementById('otpResend');
 const otpTimerWrapper = document.getElementById('otpTimerWrapper');
 
 let otpCountdownInterval = null;
-let generatedOTP = '';
+let currentEmail = '';
+let currentFullName = '';
+let currentSelectedDate = '';
 
-// Tạo OTP 4 số ngẫu nhiên
-function generateOTP() {
-    return '000000';
+// OTP inputs — navigate, paste
+otpInputs.forEach((input, index) => {
+    input.addEventListener('input', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        if (this.value) {
+            this.classList.add('filled');
+            this.classList.remove('error');
+            if (index < otpInputs.length - 1) otpInputs[index + 1].focus();
+        } else {
+            this.classList.remove('filled');
+        }
+    });
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Backspace' && !this.value && index > 0) {
+            otpInputs[index - 1].focus();
+            otpInputs[index - 1].value = '';
+            otpInputs[index - 1].classList.remove('filled');
+        }
+    });
+    input.addEventListener('paste', function (e) {
+        e.preventDefault();
+        const paste = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 6);
+        paste.split('').forEach((char, i) => {
+            if (otpInputs[i]) {
+                otpInputs[i].value = char;
+                otpInputs[i].classList.add('filled');
+            }
+        });
+        otpInputs[Math.min(paste.length, 5)].focus();
+    });
+});
+
+function resetOTPInputs() {
+    otpInputs.forEach(input => {
+        input.value = '';
+        input.classList.remove('filled', 'error');
+    });
+    otpErrorMsg.textContent = '';
 }
 
-// Mở / đóng modal
-function openModal(modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal(modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Đếm ngược OTP
 function startOTPTimer() {
     let seconds = 60;
     document.getElementById('otpCountdown').textContent = seconds;
@@ -143,66 +213,77 @@ function startOTPTimer() {
     }, 1000);
 }
 
-// Reset OTP inputs
-function resetOTPInputs() {
-    otpInputs.forEach(input => {
-        input.value = '';
-        input.classList.remove('filled', 'error');
-    });
-    otpErrorMsg.textContent = '';
-    otpInputs[0].focus();
+function openOtpModal(email) {
+    otpEmailDisplay.textContent = email;
+    resetOTPInputs();
+    startOTPTimer();
+    openModal(otpModal);
+    setTimeout(() => otpInputs[0].focus(), 300);
 }
 
-// Gửi OTP (giả lập — thay bằng API thật)
-function sendOTP(email) {
-    generatedOTP = generateOTP();
-    console.log(`OTP gửi đến ${email}: ${generatedOTP}`); // DEV only — xóa khi production
-    // TODO: gọi API gửi mail thật ở đây
-}
+// ============================================================
+// FORM SUBMIT → Create Guest → Send OTP
+// ============================================================
+const registerForm = document.getElementById('registerForm');
+const submitBtn = registerForm.querySelector('.submit-btn');
 
-// OTP input behavior
-otpInputs.forEach((input, index) => {
-    input.addEventListener('input', function () {
-        // Chỉ cho nhập số
-        this.value = this.value.replace(/[^0-9]/g, '');
+registerForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-        if (this.value) {
-            this.classList.add('filled');
-            this.classList.remove('error');
-            // Chuyển sang ô tiếp theo
-            if (index < otpInputs.length - 1) {
-                otpInputs[index + 1].focus();
-            }
-        } else {
-            this.classList.remove('filled');
-        }
-    });
+    const fullName = this.querySelector('input[type="text"]').value.trim();
+    const email = this.querySelector('input[type="email"]').value.trim();
+    const phone = this.querySelector('input[type="tel"]').value.trim();
 
-    input.addEventListener('keydown', function (e) {
-        // Backspace về ô trước
-        if (e.key === 'Backspace' && !this.value && index > 0) {
-            otpInputs[index - 1].focus();
-            otpInputs[index - 1].value = '';
-            otpInputs[index - 1].classList.remove('filled');
-        }
-    });
+    submitBtn.disabled = true;
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Đang xử lý…';
 
-    // Paste OTP
-    input.addEventListener('paste', function (e) {
-        e.preventDefault();
-        const paste = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 6);
-        paste.split('').forEach((char, i) => {
-            if (otpInputs[i]) {
-                otpInputs[i].value = char;
-                otpInputs[i].classList.add('filled');
-            }
+    try {
+        // Bước 1: Tạo khách
+        const createRes = await apiPost('/guests', {
+            full_name: fullName,
+            email: email,
+            phone: phone,
+            event_date: selectedDate,
+            guest_type: 'Khách Đăng Ký',
         });
-        otpInputs[Math.min(paste.length, 5)].focus();
-    });
+
+        if (!createRes.ok && createRes.status !== 422) {
+            throw new Error(createRes.data?.message || 'Đăng ký thất bại. Vui lòng thử lại.');
+        }
+
+        // Bước 2: Gửi OTP
+        const otpRes = await apiPost('/guest/send-otp', {
+            full_name: fullName,
+            email: email,
+        });
+
+        if (!otpRes.ok) {
+            if (otpRes.status === 429) {
+                const secs = Math.ceil(otpRes.data?.data?.remaining_seconds || 300);
+                throw new Error(`Email vừa được gửi OTP. Vui lòng thử lại sau ${secs} giây.`);
+            }
+            throw new Error(otpRes.data?.message || 'Không thể gửi OTP. Vui lòng thử lại.');
+        }
+
+        // Lưu state, mở OTP modal
+        currentEmail = email;
+        currentFullName = fullName;
+        currentSelectedDate = selectedDate;
+        openOtpModal(email);
+
+    } catch (err) {
+        alert(err.message);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHTML;
+    }
 });
 
-// Xác nhận OTP
-otpConfirmBtn.addEventListener('click', function () {
+// ============================================================
+// VERIFY OTP
+// ============================================================
+otpConfirmBtn.addEventListener('click', async function () {
     const entered = Array.from(otpInputs).map(i => i.value).join('');
 
     if (entered.length < 6) {
@@ -210,53 +291,91 @@ otpConfirmBtn.addEventListener('click', function () {
         return;
     }
 
-    if (entered === generatedOTP) {
+    otpErrorMsg.textContent = '';
+    const originalText = this.textContent;
+    this.disabled = true;
+    this.textContent = 'Đang xác nhận…';
+
+    try {
+        const res = await apiPost('/guest/verify-otp', {
+            email: currentEmail,
+            otp: entered,
+        });
+
+        if (!res.ok) {
+            otpErrorMsg.textContent = res.data?.message || 'Mã OTP không đúng. Vui lòng thử lại.';
+            otpInputs.forEach(i => i.classList.add('error'));
+            setTimeout(() => otpInputs.forEach(i => i.classList.remove('error')), 600);
+            return;
+        }
+
+        // Thành công
         clearInterval(otpCountdownInterval);
         closeModal(otpModal);
+        document.getElementById('modalDate').textContent = DATE_LABEL_MAP[currentSelectedDate] || currentSelectedDate;
 
-        // Lấy ngày active
-        const activeBtn = document.querySelector('.date-btn.active');
-        if (activeBtn) modalDate.textContent = activeBtn.textContent;
+        // Reset form về trạng thái ban đầu
+        registerForm.reset();
+        dateBtns.forEach(b => b.classList.remove('active'));
+        dateBtns[0].classList.add('active');
+        selectedDate = '2026-04-17';
 
         setTimeout(() => openModal(successModal), 300);
-    } else {
-        otpErrorMsg.textContent = 'Mã OTP không đúng. Vui lòng thử lại.';
-        otpInputs.forEach(i => i.classList.add('error'));
-        setTimeout(() => {
-            otpInputs.forEach(i => i.classList.remove('error'));
-        }, 600);
+
+    } catch {
+        otpErrorMsg.textContent = 'Lỗi kết nối. Vui lòng thử lại.';
+    } finally {
+        this.disabled = false;
+        this.textContent = originalText;
     }
 });
 
-// Gửi lại OTP
-otpResend.addEventListener('click', function () {
-    const email = document.querySelector('#registerForm input[type="email"]').value;
-    sendOTP(email);
-    resetOTPInputs();
-    startOTPTimer();
+// ============================================================
+// RESEND OTP
+// ============================================================
+otpResend.addEventListener('click', async function () {
+    this.disabled = true;
+    otpErrorMsg.textContent = '';
+
+    try {
+        const res = await apiPost('/guest/send-otp', {
+            full_name: currentFullName,
+            email: currentEmail,
+        });
+
+        if (!res.ok) {
+            if (res.status === 429) {
+                const secs = Math.ceil(res.data?.data?.remaining_seconds || 300);
+                otpErrorMsg.textContent = `Vui lòng thử lại sau ${secs} giây.`;
+            } else {
+                otpErrorMsg.textContent = res.data?.message || 'Không thể gửi lại OTP.';
+            }
+        } else {
+            resetOTPInputs();
+            startOTPTimer();
+        }
+    } catch {
+        otpErrorMsg.textContent = 'Lỗi kết nối. Vui lòng thử lại.';
+    } finally {
+        this.disabled = false;
+    }
 });
 
-// Submit form → mở OTP modal
-document.getElementById('registerForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    otpEmailDisplay.textContent = email;
-    sendOTP(email);
-    resetOTPInputs();
-    startOTPTimer();
-    openModal(otpModal);
-});
-
-// Đóng modal
+// ============================================================
+// ĐÓNG MODAL
+// ============================================================
 document.getElementById('otpModalClose').addEventListener('click', () => {
     clearInterval(otpCountdownInterval);
     closeModal(otpModal);
 });
-
 document.getElementById('modalClose').addEventListener('click', () => closeModal(successModal));
-document.getElementById('modalCloseBtn').addEventListener('click', () => closeModal(successModal));
 
-// Click ngoài để đóng
+// Nút "Đã hiểu" → chỉ đóng modal
+document.getElementById('modalCloseBtn').addEventListener('click', () => {
+    closeModal(successModal);
+});
+
+// Click ngoài modal để đóng
 [otpModal, successModal].forEach(modal => {
     modal.addEventListener('click', function (e) {
         if (e.target === this) {
@@ -275,82 +394,65 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-// ==========================================
-// COUNTER ANIMATION — count up khi scroll vào
-// ==========================================
+// ============================================================
+// COUNTER ANIMATION
+// ============================================================
 (function () {
     const counterEl = document.querySelector('.register-counter .num-wrapper span');
     if (!counterEl) return;
-
     const target = parseInt(counterEl.textContent.replace(/\D/g, ''), 10);
 
     function animateCount(el, to, duration) {
-        let start = 0;
         const startTime = performance.now();
         function update(now) {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // easeOutExpo
+            const progress = Math.min((now - startTime) / duration, 1);
             const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-            const current = Math.floor(eased * to);
-            el.textContent = current.toLocaleString('vi-VN');
+            el.textContent = Math.floor(eased * to).toLocaleString('vi-VN');
             if (progress < 1) requestAnimationFrame(update);
         }
         requestAnimationFrame(update);
     }
 
-    const obs = new IntersectionObserver(entries => {
+    new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
             animateCount(counterEl, target, 2000);
-            obs.disconnect();
         }
-    }, { threshold: 0.5 });
-
-    obs.observe(counterEl);
+    }, { threshold: 0.5 }).observe(counterEl);
 })();
 
+// ============================================================
+// FAB BUTTON
+// ============================================================
 (function () {
-  const fab       = document.getElementById('fabCTA');
-  const fabBtn    = document.getElementById('fabBtn');
-  const registerSection = document.querySelector('.register-section');
- 
-  if (!fab || !fabBtn || !registerSection) return;
- 
-  const showAfter = window.innerHeight * 0.6;
- 
-  function updateFab() {
-    const scrollY      = window.scrollY;
-    const docHeight    = document.documentElement.scrollHeight;
-    const windowHeight = window.innerHeight;
- 
-    // Ẩn FAB khi người dùng đã scroll đến khu vực form đăng ký
-    const registerTop  = registerSection.getBoundingClientRect().top + scrollY;
-    const nearRegister = scrollY + windowHeight > registerTop + 100;
- 
-    if (scrollY > showAfter && !nearRegister) {
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
+    const fab = document.getElementById('fabCTA');
+    const fabBtn = document.getElementById('fabBtn');
+    const registerSection = document.querySelector('.register-section');
+    if (!fab || !fabBtn || !registerSection) return;
+
+    const showAfter = window.innerHeight * 0.6;
+
+    function updateFab() {
+        const scrollY = window.scrollY;
+        const registerTop = registerSection.getBoundingClientRect().top + scrollY;
+        const nearRegister = scrollY + window.innerHeight > registerTop + 100;
+        fab.classList.toggle('visible', scrollY > showAfter && !nearRegister);
     }
-  }
- 
-  window.addEventListener('scroll', updateFab, { passive: true });
-  updateFab();
- 
-  // Click: scroll xuống form
-  fabBtn.addEventListener('click', function () {
-    registerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    window.addEventListener('scroll', updateFab, { passive: true });
+    updateFab();
+
+    fabBtn.addEventListener('click', function () {
+        registerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+            const firstInput = registerSection.querySelector('input');
+            if (firstInput) firstInput.focus();
+        }, 700);
+    });
+
     setTimeout(function () {
-      const firstInput = registerSection.querySelector('input');
-      if (firstInput) firstInput.focus();
-    }, 700);
-  });
- 
-  // Tự động hiện tooltip lần đầu sau 3 giây (desktop only)
-  setTimeout(function () {
-    if (fab.classList.contains('visible') && window.innerWidth > 767) {
-      fab.classList.add('tooltip-visible');
-      setTimeout(function () { fab.classList.remove('tooltip-visible'); }, 2500);
-    }
-  }, 3000);
+        if (fab.classList.contains('visible') && window.innerWidth > 767) {
+            fab.classList.add('tooltip-visible');
+            setTimeout(() => fab.classList.remove('tooltip-visible'), 2500);
+        }
+    }, 3000);
 })();
