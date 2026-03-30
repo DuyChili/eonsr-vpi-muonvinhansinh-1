@@ -155,6 +155,8 @@ let currentEmail = '';
 let currentFullName = '';
 let currentSelectedDate = '';
 let currentPhone = '';
+let currentGuestId = '';
+let currentSecretCode = '';
 
 // OTP inputs — navigate, paste
 otpInputs.forEach((input, index) => {
@@ -310,6 +312,10 @@ otpConfirmBtn.addEventListener('click', async function () {
             throw new Error(createRes.data?.message || 'Xác thực thành công nhưng không thể ghi nhận thông tin khách.');
         }
 
+        // Lưu id và secret_code để truyền sang Living Connection
+        currentGuestId = createRes.data?.data?.id || '';
+        currentSecretCode = createRes.data?.data?.secret_code || '';
+
         // Bước 3: Hoàn tất
         clearInterval(otpCountdownInterval);
         closeModal(otpModal);
@@ -385,6 +391,8 @@ document.querySelector('.modal-btn-outline').addEventListener('click', function 
     const params = new URLSearchParams({
         name: currentFullName,
         email: currentEmail,
+        id: currentGuestId,
+        secret_code: currentSecretCode,
     });
     const url = this.getAttribute('href').split('?')[0] + '?' + params.toString();
     window.open(url, '_blank');
